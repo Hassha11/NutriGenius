@@ -1,12 +1,10 @@
-//import React from 'react';
+import React, { useState } from 'react';
 import './LoginForm.css';
 import axios from 'axios';
-import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaUser, FaLock } from "react-icons/fa";
 
 const LoginForm = () => {
-
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
@@ -20,12 +18,18 @@ const LoginForm = () => {
                 password: password,
             });
 
-            alert(response.data);
-            if (response.data === "Data Inserted") {
-                navigate('/dashboard'); 
+            if (response.status === 200) {
+                alert("Login Sucess");
+                navigate('/bmi'); 
             }
+           
         } catch (error) {
-            console.error('There was an error logging in!', error);
+            if (error.response && error.response.status === 401) {
+                alert("Login Unsucess");
+            } else {
+            // setError('There was an error logging in!');
+                console.error('There was an error logging in!', error);
+            }
         }
     };
 
@@ -50,7 +54,7 @@ const LoginForm = () => {
                 <button type="submit">Login</button>
 
                 <div className="register-link">
-                    <p>Don't have an account? <a href="#">Register</a></p>
+                    <p>Don't have an account? <a href="/reg">Register</a></p>
                 </div>
             </form>
         </div>
