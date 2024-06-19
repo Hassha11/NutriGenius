@@ -1,0 +1,47 @@
+/* Dashboard styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.layout {
+    display: flex;
+}
+
+nav {
+    background-color: #333;
+    width: 230px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    padding: 10px 15px;
+    text-align: left;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    top: 60px;
+}
+
+nav ul li a:hover {
+    background-color: #575757;
+}
+
+.container {
+    margin-left: 220px; /* Same as the width of the sidebar plus some padding */
+    padding: 2rem;
+    flex-grow: 1;
+}

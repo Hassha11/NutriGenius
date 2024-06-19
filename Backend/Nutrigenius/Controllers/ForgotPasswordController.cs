@@ -10,21 +10,21 @@ namespace Nutrigenius.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LoginController : ControllerBase
+    public class ForgotPasswordController : ControllerBase
     {
         private readonly string _connectionString;
 
-        public LoginController(IConfiguration configuration)
+        public ForgotPasswordController(IConfiguration configuration)
         {
             _connectionString = configuration.GetConnectionString("DefaultConnection");
         }
 
-        [HttpPost("Login")]
-        public async Task<IActionResult> Login([FromBody] Login login)
+        [HttpPost("ResetPassword")]
+        public async Task<IActionResult> ResetPassword([FromBody] ForgotPassword forgotPassword)
         {
-            if (login == null || string.IsNullOrEmpty(login.UserName) || string.IsNullOrEmpty(login.Password))
+            if (forgotPassword == null || string.IsNullOrEmpty(forgotPassword.UserName) || string.IsNullOrEmpty(forgotPassword.Password))
             {
-                return Unauthorized(new { message = "0" });
+                return BadRequest(new { message = "Invalid request" });
             }
 
             try
@@ -33,22 +33,22 @@ namespace Nutrigenius.Controllers
                 {
                     await conn.OpenAsync();
 
-                    string sql = "SELECT COUNT(1) FROM Login WHERE USERNAME = @UserName AND PASSWORD = @Password";
+                    string sql = "UPDATE Login SET Password = @Password WHERE UserName = @UserName";
 
                     using (SqlCommand cmd = new SqlCommand(sql, conn))
                     {
-                        cmd.Parameters.AddWithValue("@UserName", login.UserName);
-                        cmd.Parameters.AddWithValue("@Password", login.Password);
+                        cmd.Parameters.AddWithValue("@Password", forgotPassword.Password); // In a real app, hash the password before storing it
+                        cmd.Parameters.AddWithValue("@UserName", forgotPassword.UserName);
 
-                        int userCount = (int)await cmd.ExecuteScalarAsync();
+                        int rowsAffected = await cmd.ExecuteNonQueryAsync();
 
-                        if (userCount > 0)
+                        if (rowsAffected > 0)
                         {
-                            return Ok(1); // Return the username if login is successful
+                            return Ok(new { message = "Password has been reset successfully" });
                         }
                         else
                         {
-                            return Unauthorized(new { message = "1" });
+                            return BadRequest(new { message = "Invalid username" });
                         }
                     }
                 }
@@ -58,6 +58,5 @@ namespace Nutrigenius.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error: " + ex.Message);
             }
         }
-
     }
 }

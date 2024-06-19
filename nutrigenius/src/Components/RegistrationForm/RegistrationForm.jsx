@@ -1,37 +1,106 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import './RegistrationForm.css';
 
 const RegistrationForm = () => {
+    const [name, setName] = useState('');
+    const [gender, setGender] = useState('');
+    const [DOB, setDOB] = useState('');
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmpass, setConfirmPass] = useState('');
+    const navigate = useNavigate();
+
+    const handleRegistration = async (event) => {
+        event.preventDefault();
+
+        try {
+            const response = await axios.post('http://localhost:5274/api/Registration/Registration', {
+                name: name,
+                gender: gender,
+                dob: DOB,
+                userName: username,
+                password: password,
+                confirmPass: confirmpass,
+            });
+
+            if (response.status === 200) {
+                alert("Registration Success");
+                navigate('/'); 
+            }
+           
+        } catch (error) {
+            if (error.response && error.response.status === 401) {
+                alert("Registration Unsuccessful");
+            } else {
+                console.error('There was an error registering!', error);
+            }
+        }
+    };
+
     return (
         <div className='wrapper'>
-            <form action="">
+            <form onSubmit={handleRegistration}>
                 <h1>Registration</h1>
                 <div className="input-box">
-                    <input type="text" placeholder='Name' required/>    
+                    <input
+                        type="text"
+                        placeholder='Name'
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        required
+                    />    
                 </div>
                 <div className="input-box">
-                    <input type="text" placeholder='Age' required/>
-                </div>
-                <div className="input-box">
-                    <input type="text" placeholder='Height' required/>
-                </div>
-                <div className="input-box">
-                    <input type="text" placeholder='Weight' required/>
-                </div>
-                <div className="input-box">
-                    <select required>
-                        <option value="" disabled selected>Gender</option>
+                    <select
+                        value={gender}
+                        onChange={(e) => setGender(e.target.value)}
+                        required
+                    >
+                        <option value="" disabled>Gender</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                     </select>
                 </div>
                 <div className="input-box">
-                      <label for="dob">Date of Birth</label>
-                      <input type="date" id="dob" name="dob" required value="2000-01-01"/>
+                    <label htmlFor="dob">Date of Birth</label>
+                    <input
+                        type="date"
+                        id="dob"
+                        value={DOB}
+                        onChange={(e) => setDOB(e.target.value)}
+                        required
+                    />
                 </div>
-
+                <div className="input-box">
+                    <input
+                        type="text"
+                        placeholder='Username'
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        required
+                    />
+                </div>
+                <div className="input-box">
+                    <input
+                        type="password"
+                        placeholder='Password'
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+                </div>
+                <div className="input-box">
+                    <input
+                        type="password"
+                        placeholder='Confirm Password'
+                        value={confirmpass}
+                        onChange={(e) => setConfirmPass(e.target.value)}
+                        required
+                    />
+                </div>
                 <button type="submit">Submit</button>
-
             </form>
         </div>
     );
