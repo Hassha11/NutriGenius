@@ -19,13 +19,13 @@ const LoginForm = () => {
             });
 
             if (response.status === 200) {
-                alert("Login Sucess");
+                alert("Login Success");
                 navigate('/bmi'); 
             }
            
         } catch (error) {
             if (error.response && error.response.status === 401) {
-                alert("Login Unsucess");
+                alert("Login Unsuccess");
             } else {
             // setError('There was an error logging in!');
                 console.error('There was an error logging in!', error);

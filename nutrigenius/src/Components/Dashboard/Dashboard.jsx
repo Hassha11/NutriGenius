@@ -7,23 +7,24 @@ const Layout = () => {
         <div className="layout">
             <nav>
                 <ul>
+                <h1>NutriGenius</h1><br></br>
                     <li>
-                        <Link to="/home">Home</Link>
+                        <Link to="/bmi">BMI Calculating</Link>
                     </li>
                     <li>
-                        <Link to="/reg">Registration</Link>
+                        <Link to="/">Analysis</Link>
                     </li>
                     <li>
-                        <Link to="/login">Login</Link>
+                        <Link to="/user">User Account</Link>
                     </li>
                     <li>
-                        <Link to="/bmi">BMI</Link>
+                        <Link to="/">Dietitian Recommendations</Link>
                     </li>
                     <li>
                         <Link to="/about">About</Link>
                     </li>
-                    <li>
-                        <Link to="/user">User</Link>
+                    <li><br></br>
+                        <Link to="/">Log Out</Link>
                     </li>
                 </ul>
             </nav>
