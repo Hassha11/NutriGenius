@@ -7,13 +7,17 @@ import ForgotPassword from './Components/ForgotPassword/ForgotPassword';
 import AboutForm from './Components/About/AboutForm';
 import User from './Components/User/User';
 import Dashboard from './Components/Dashboard/Dashboard';
+import DietPlan from './Components/DietPlan/DietPlan';
+import Header from './Components/Header/Header';
+import Home from './Components/Home/Home';
 
 function App() {
   return (
     <Router>
     <div className="App">
       <Routes>
-        <Route path="/" element={<Dashboard />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/bmi" element={<BMIForm />} />
         <Route path="/reg" element={<RegistrationForm />} />
@@ -21,6 +25,8 @@ function App() {
         <Route path="/about" element={<AboutForm/>} />
         <Route path="/user" element={<User/>} />
         <Route path="/dashboard" element={<Dashboard/>} />
+        <Route path="/diet" element={<DietPlan/>} />
+        <Route path="/header" element={<Header/>} />
       </Routes>
     </div>
     </Router>

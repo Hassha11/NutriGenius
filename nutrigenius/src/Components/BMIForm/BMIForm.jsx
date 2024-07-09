@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './BMIForm.css';
 
+ 
 const BMIForm = () => {
     //const [name, setUserID] = useState('');
     const [age, setAge] = useState('');
@@ -39,6 +40,10 @@ const BMIForm = () => {
 
     return (
         <div className='wrapper'>
+
+            <nav>
+
+            </nav>
             <form onSubmit={handleBMI}>
                 <h1>BMI Calculation</h1>
                 <div className="input-box">
@@ -71,7 +76,6 @@ const BMIForm = () => {
                     <button type="submit">Yes</button>
                     <button type="submit">No</button>
                 </div>
-
             </form>
         </div>
     );

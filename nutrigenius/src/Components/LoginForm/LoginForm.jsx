@@ -3,6 +3,10 @@ import './LoginForm.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { FaUser, FaLock } from "react-icons/fa";
+import Header from '../Header/Header';
+import Dashboard from '../Dashboard/Dashboard';
+import Footer from '../Footer/Footer';
+
 
 const LoginForm = () => {
     const [username, setUsername] = useState('');
@@ -34,8 +38,11 @@ const LoginForm = () => {
     };
 
     return (
+        <div className='layout'>
+          <Header />
+           <Dashboard />
         <div className='wrapper'>
-            <form onSubmit={handleLogin}>
+           <form onSubmit={handleLogin}>
                 <h1>Login</h1>
                 <div className="input-box">
                     <input type="text" placeholder='Username' value={username} onChange={(e) => setUsername(e.target.value)} required/> 
@@ -57,6 +64,8 @@ const LoginForm = () => {
                     <p>Don't have an account? <a href="/reg">Register</a></p>
                 </div>
             </form>
+        </div>
+        <Footer/>
         </div>
     );
 };

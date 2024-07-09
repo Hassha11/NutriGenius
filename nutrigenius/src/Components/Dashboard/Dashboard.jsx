@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import './Dashboard.css';
 
+
 const Layout = () => {
     return (
         <div className="layout">
@@ -15,10 +16,10 @@ const Layout = () => {
                         <Link to="/">Analysis</Link>
                     </li>
                     <li>
-                        <Link to="/user">User Account</Link>
+                        <Link to="/user">User Profile</Link>
                     </li>
                     <li>
-                        <Link to="/">Dietitian Recommendations</Link>
+                        <Link to="/diet">Dietitian Recommendations</Link>
                     </li>
                     <li>
                         <Link to="/about">About</Link>
@@ -29,7 +30,7 @@ const Layout = () => {
                 </ul>
             </nav>
             <div className="container">
-                <Outlet />
+            <Outlet />
             </div>
         </div>
     );

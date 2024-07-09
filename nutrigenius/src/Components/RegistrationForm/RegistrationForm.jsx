@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './RegistrationForm.css';
+import Header from '../Header/Header';
+import Dashboard from '../Dashboard/Dashboard';
+import Footer from '../Footer/Footer';
 
 const RegistrationForm = () => {
     const [name, setName] = useState('');
@@ -40,6 +43,9 @@ const RegistrationForm = () => {
     };
 
     return (
+        <div className='layout'>
+          <Header />
+           <Dashboard />
         <div className='wrapper'>
             <form onSubmit={handleRegistration}>
                 <h1>Registration</h1>
@@ -102,6 +108,8 @@ const RegistrationForm = () => {
                 </div>
                 <button type="submit">Submit</button>
             </form>
+        </div>
+        <Footer/>
         </div>
     );
 };

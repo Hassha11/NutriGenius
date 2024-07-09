@@ -1,5 +1,5 @@
 .wrapper {
-    max-width: 300px; /* Adjusted width */
+    max-width: 320px; /* Adjusted width */
     max-height: 400px; /* Adjusted height */
     margin: 0 auto;
     padding: 10px 30px; /* Adjusted padding */
@@ -24,6 +24,7 @@ h1 {
     margin-bottom: 5px;
     margin-top: 1px;
 }
+
 
 .input-box input,
 .input-box select {
@@ -51,12 +52,7 @@ h1 {
     justify-content: space-between;
 }
 
-.flex-container .input-box input[placeholder='BMI'],
-.flex-container .input-box input[placeholder='Status'] {
-    width: 70px; /* Adjusted width */
-    margin-bottom: 0px; /* Adjusted margin */
-    margin-top: -50px;
-}
+
 
 button {
     width: 50px; /* Adjusted width */
@@ -95,3 +91,5 @@ h4 {
 button:hover {
     background-color: #fff;
 }
+
+

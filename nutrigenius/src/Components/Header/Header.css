@@ -1,0 +1,51 @@
+.wrapper-header {
+    background-color: #222222;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between; /* Distribute space between left and right sections */
+    align-items: center;
+    width: 100%; /* Ensure the header takes up the full width */
+    max-width: 3000px; /* Adjust this value as needed for the desired maximum width */
+    margin: 0 auto; /* Center the header if it's not full-width */
+    position: fixed; /* Fix the header to the top */
+    top: 0; /* Position it at the very top */
+    right: 0; /* Align to the right edge */
+    z-index: 1000; /* Ensure it stays on top of other content */
+    transform: translateX(230px);
+}
+
+.left-section {
+    display: flex;
+    align-items: center; /* Vertically center the items */
+    white-space: nowrap; /* Prevent wrapping of content */
+    transform: translateX(-140px);
+    color: #f9f9f9;
+}
+
+.signup-link {
+    text-decoration: none;
+    color: #f9f9f9; /* Adjust the color as needed */
+    transform: translateX(920px);
+}
+
+.signup-link:hover {
+    text-decoration: underline;
+}
+
+.right-section {
+    display: flex;
+    align-items: center; /* Vertically center the items */
+    margin-left: auto; /* Pushes the right-section all the way to the right */
+    padding-right: 1rem; /* Adjust this value to move the icon more to the right */
+}
+
+.header-icon {
+    font-size: 1.5rem; /* Adjust the size of the icon as needed */
+    margin-left: 1rem; /* Space between the icon and the right edge */
+    transform: translateX(-220px);
+    color: #f9f9f9;
+}
+
+.search-icon {
+    margin-right: 10rem; /* Add space between the search icon and the user icon */
+}
