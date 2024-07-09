@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './BMIForm.css';
 
+ 
 const BMIForm = () => {
     //const [name, setUserID] = useState('');
     const [age, setAge] = useState('');
@@ -39,31 +40,42 @@ const BMIForm = () => {
 
     return (
         <div className='wrapper'>
-            <form action="">
+
+            <nav>
+
+            </nav>
+            <form onSubmit={handleBMI}>
                 <h1>BMI Calculation</h1>
                 <div className="input-box">
-                    <select required>
+                    <select value={gender} onChange={(e) => setGender(e.target.value)}required>
                         <option value="" disabled selected>Gender</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                     </select>
                 </div>
                 <div className="input-box">
-                    <input type="text" placeholder='Age' required/>
+                <input type="text" placeholder='Age' value={age} onChange={(e) => setAge(e.target.value)} required/> 
                 </div>
                 <div className="input-box">
-                    <input type="text" placeholder='Height' required/>
+                <input type="text" placeholder='Height' value={height} onChange={(e) => setHeight(e.target.value)} required/> 
                 </div>
                 <div className="input-box">
-                    <input type="text" placeholder='Weight' required/>
+                <input type="text" placeholder='Weight' value={weight} onChange={(e) => setWeight(e.target.value)} required/> 
                 </div>
                 <div class="flex-container">
                 <button type="submit">Calculate</button>
                 <div className="input-box">
-                    <input type="text" placeholder='BMI' required/>
-                    </div>    
+                    <input type="text" placeholder='BMI'/>
+                    </div><br></br>
+                <div className="input-box">
+                    <input type="text" placeholder='Status'/>
                 </div>
-
+                </div>
+                <div class="flex-container">
+                <h4>Do you want Diet Plan?</h4>
+                    <button type="submit">Yes</button>
+                    <button type="submit">No</button>
+                </div>
             </form>
         </div>
     );

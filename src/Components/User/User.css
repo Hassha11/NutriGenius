@@ -1,0 +1,36 @@
+.wrapper {
+    max-width: 300px; /* Adjusted width */
+    max-height: 400px; /* Adjusted height */
+    margin: 0 auto;
+    padding: 10px 30px; /* Adjusted padding */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(30px);
+    color: #fff;
+}
+
+.user-container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 2rem auto;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.user-container h2 {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    color: #333;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 20px; /* Adjusted font size */
+    color: #fff;
+}
