@@ -3,6 +3,9 @@ import React, { useState } from 'react';
 import './ForgotPassword.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Header from '../Header/Header';
+import Dashboard from '../Dashboard/Dashboard';
+import Footer from '../Footer/Footer';
 
 const ForgotPassword = () => {
     const [username, setUsername] = useState('');
@@ -34,6 +37,9 @@ const ForgotPassword = () => {
     };
 
     return (
+        <div className='layout'>
+        <Header />
+         <Dashboard />
         <div className='wrapper'>
             <form onSubmit={handleForgot}>
                 <h1>Change Password</h1>
@@ -49,6 +55,8 @@ const ForgotPassword = () => {
                 <button type="submit">Submit</button>
 
             </form>
+        </div>
+        <Footer/>
         </div>
     );
 };
