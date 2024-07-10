@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import './DietPlan.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Header from '../Header/Header';
+import Dashboard from '../Dashboard/Dashboard';
+import Footer from '../Footer/Footer';
 
 const DietPlan = () => {
     const [diabetes, setDiabetes] = useState('');
@@ -39,6 +42,9 @@ const DietPlan = () => {
 
 
     return (
+        <div className='layout'>
+        <Header />
+         <Dashboard />
         <div className='wrapper'>
             <form onSubmit={handleDiet}>
                 <h2>Request a Diet Plan</h2>
@@ -95,6 +101,8 @@ const DietPlan = () => {
 
                 <button type="submit">Submit</button>
             </form>
+        </div>
+        <Footer/>
         </div>
     );
 };

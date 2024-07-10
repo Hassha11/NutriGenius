@@ -1,13 +1,14 @@
 .wrapper-footer {
     background-color: #3e3e3e;
-    padding: 3.5rem; /* Reduced padding to make it thinner */
+    padding: 5rem; /* Reduced padding to make it thinner */
     display: flex;
     justify-content: space-between; /* Distribute space between left and right sections */
     align-items: center;
     width: calc(100% - 180px); /* Adjust the width to account for the sidebar */
-    max-width: 2000px; /* Adjust this value as needed for the desired maximum width */
+    width: 100%;
     margin: 0 auto; /* Center the footer if it's not full-width */
-    position: fixed; /* Fix the footer to the bottom of the viewport */
+    position:absolute; 
     bottom: 0; /* Align to the bottom of the viewport */
-    left: 230px; /* Adjust to match the width of the sidebar */
+    top: 660px;
+    left: 0px; /* Adjust to match the width of the sidebar */
 }
