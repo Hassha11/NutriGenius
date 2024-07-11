@@ -22,13 +22,13 @@ const ForgotPassword = () => {
             });
 
             if (response.status === 200) {
-                alert("Login Sucess");
+                alert("Password change Success");
                 navigate('/login'); 
             }
            
         } catch (error) {
             if (error.response && error.response.status === 401) {
-                alert("Password change Unsucess");
+                alert("Password change Unsuccess");
             } else {
             // setError('There was an error logging in!');
                 console.error('There was an error changing password!', error);
@@ -50,7 +50,7 @@ const ForgotPassword = () => {
                     <input type="password" placeholder='New Password' value={password} onChange={(e) => setPassword(e.target.value)} required/>
                 </div>
                 <div className="input-box">
-                    <input type="text" placeholder='Confirm Password' required/>
+                    <input type="password" placeholder='Confirm Password' required/>
                 </div>
                 <button type="submit">Submit</button>
 

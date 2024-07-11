@@ -15,10 +15,12 @@ namespace Nutrigenius.Controllers
     public class BMIController : ControllerBase
     {
         private readonly string _connectionString;
+        private readonly UserContext _userContext;
 
-        public BMIController(IConfiguration configuration)
+        public BMIController(IConfiguration configuration, UserContext userContext)
         {
             _connectionString = configuration.GetConnectionString("DefaultConnection");
+            _userContext = userContext;
         }
 
         [HttpPost("BMI")]
@@ -35,14 +37,11 @@ namespace Nutrigenius.Controllers
             // Calculate BMI
             decimal calculatedBmi = bmi.Weight / (heightInMeters * heightInMeters);
 
-            // Retrieve user ID from claims
-            var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
-            if (userIdClaim == null)
+            var userId = _userContext.UserId;
+            if (userId == null)
             {
                 return Unauthorized(new { message = "User is not authenticated" });
             }
-
-            string userId = userIdClaim.Value;
 
             try
             {

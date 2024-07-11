@@ -13,10 +13,12 @@ namespace Nutrigenius.Controllers
     public class LoginController : ControllerBase
     {
         private readonly string _connectionString;
+        private readonly UserContext _userContext;
 
-        public LoginController(IConfiguration configuration)
+        public LoginController(IConfiguration configuration, UserContext userContext)
         {
             _connectionString = configuration.GetConnectionString("DefaultConnection");
+            _userContext = userContext;
         }
 
         [HttpPost("Login")]

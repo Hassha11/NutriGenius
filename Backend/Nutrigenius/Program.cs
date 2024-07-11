@@ -2,12 +2,14 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Nutrigenius.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSingleton<UserContext>();
 builder.Services.AddSwaggerGen();
 
 // Add CORS policy
@@ -38,3 +40,4 @@ app.UseCors("AllowReactApp");
 app.MapControllers();
 
 app.Run();
+

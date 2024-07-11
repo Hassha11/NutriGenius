@@ -12,3 +12,41 @@
     top: 660px;
     left: 0px; /* Adjust to match the width of the sidebar */
 }
+
+ul li {
+    padding: 10px 15px;
+    text-align: center;
+}
+
+ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    top: 60px;
+}
+
+.wrapper-footer ul {
+    list-style-type: none; /* Remove default list item bullets */
+    padding: 0; /* Remove default padding */
+    text-align: center; /* Center align the list items */
+}
+
+.flex-container li {
+    padding: 10px 15px;
+    text-align: center; /* Center align the text within list items */
+}
+
+
+.wrapper-footer h1 {
+    margin-bottom: 20px; /* Adjust spacing */
+    margin-top: -10px; /* Move up the h1 */
+    text-align: left; /* Align text to the left */
+    color: white; /* Text color */
+}
+
+.wrapper-footer ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    margin-top: 10px; /* Adjust top margin */
+}
