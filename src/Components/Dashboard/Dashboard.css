@@ -11,6 +11,7 @@ body {
 .layout h1 {
     font-size: 28px;
     text-align: center;
+    font-family: 'Poppins', sans-serif;
 }
 
 nav {
@@ -153,3 +154,5 @@ h4 {
 button:hover {
     background-color: #fff;
 }
+
+
