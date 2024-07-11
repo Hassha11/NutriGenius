@@ -82,8 +82,7 @@
               "RelativeToolTip": "Models\\UserContext.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-11T18:48:10.135Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-11T18:48:10.135Z"
             },
             {
               "$type": "Document",
@@ -95,8 +94,7 @@
               "RelativeToolTip": "Models\\Registration.cs",
               "ViewState": "AQIAAAUAAAAAAAAAAAAAwAkAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-17T16:38:53.908Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-17T16:38:53.908Z"
             },
             {
               "$type": "Document",
@@ -108,8 +106,7 @@
               "RelativeToolTip": "Controllers\\LoginController.cs",
               "ViewState": "AQIAAB4AAAAAAAAAAAAYwBEAAABIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-15T06:28:12.423Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-15T06:28:12.423Z"
             },
             {
               "$type": "Document",
@@ -134,8 +131,7 @@
               "RelativeToolTip": "Controllers\\RegistrationController.cs",
               "ViewState": "AQIAAB4AAAAAAAAAAAAtwCYAAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-17T16:49:06.56Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-17T16:49:06.56Z"
             },
             {
               "$type": "Document",
@@ -147,8 +143,7 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AQIAAAoAAAAAAAAAAAAowBQAAABJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-15T05:25:35.588Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-15T05:25:35.588Z"
             },
             {
               "$type": "Document",
@@ -160,8 +155,7 @@
               "RelativeToolTip": "Models\\BMI.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-18T16:42:55.812Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-18T16:42:55.812Z"
             },
             {
               "$type": "Document",
@@ -173,8 +167,7 @@
               "RelativeToolTip": "Models\\Login.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-14T17:18:43.198Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-14T17:18:43.198Z"
             },
             {
               "$type": "Document",
@@ -186,8 +179,7 @@
               "RelativeToolTip": "Models\\DietPlan.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T15:32:40.372Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-03T15:32:40.372Z"
             },
             {
               "$type": "Document",
@@ -199,8 +191,7 @@
               "RelativeToolTip": "Controllers\\DietPlanController.cs",
               "ViewState": "AQIAABYAAAAAAAAAAAAzwCAAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T15:38:12.847Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-03T15:38:12.847Z"
             },
             {
               "$type": "Document",
@@ -212,8 +203,7 @@
               "RelativeToolTip": "Models\\ForgotPassword.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-19T17:30:45.274Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-19T17:30:45.274Z"
             },
             {
               "$type": "Document",
@@ -225,8 +215,7 @@
               "RelativeToolTip": "Controllers\\ForgotPasswordController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAD4AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-19T17:30:24.357Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-19T17:30:24.357Z"
             },
             {
               "$type": "Document",
@@ -238,8 +227,7 @@
               "RelativeToolTip": "appsettings.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-06-15T05:32:36.822Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-15T05:32:36.822Z"
             },
             {
               "$type": "Document",
@@ -251,8 +239,7 @@
               "RelativeToolTip": "Properties\\launchSettings.json",
               "ViewState": "AQIAAAMAAAAAAAAAAAAUwCkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-06-16T15:57:39.728Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-16T15:57:39.728Z"
             }
           ]
         }
