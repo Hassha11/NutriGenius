@@ -14,6 +14,8 @@ const BMIForm = () => {
     const [gender, setGender] = useState('');
     const [height, setHeight] = useState('');
     const [weight, setWeight] = useState('');
+    const [bmi, setBmi] = useState('');
+    const [status, setStatus] = useState('');
     const navigate = useNavigate();
 
     const handleBMI = async (event) => {
@@ -24,12 +26,14 @@ const BMIForm = () => {
                 age: age,
                 gender: gender,
                 height: height,
-                weight: weight,
+                weight: weight
             });
 
             if (response.status === 200) {
+                const { bmi, status } = response.data; // Assuming the response includes BMI and status
+                setBmi(bmi);
+                setStatus(status);
                 alert("BMI Calculation Success");
-                navigate('/'); 
             }
            
         } catch (error) {
@@ -67,10 +71,10 @@ const BMIForm = () => {
                 <div class="flex-container">
                 <button type="submit">Calculate</button>
                 <div className="input-box">
-                    <input type="text" placeholder='BMI'/>
+                <input type="text" placeholder='BMI' value={bmi} readOnly/> 
                     </div><br></br>
                 <div className="input-box">
-                    <input type="text" placeholder='Status'/>
+                <input type="text" placeholder='Status' value={status} readOnly/> 
                 </div>
                 </div>
                 <div class="flex-container">

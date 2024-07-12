@@ -37,6 +37,25 @@ namespace Nutrigenius.Controllers
             // Calculate BMI
             decimal calculatedBmi = bmi.Weight / (heightInMeters * heightInMeters);
 
+            // Determine BMI status based on calculated BMI
+            string status;
+            if (calculatedBmi < 18.5m)
+            {
+                status = "Underweight";
+            }
+            else if (calculatedBmi >= 18.5m && calculatedBmi <= 24.9m)
+            {
+                status = "Healthy";
+            }
+            else if (calculatedBmi >= 25.0m && calculatedBmi <= 29.9m)
+            {
+                status = "Overweight";
+            }
+            else
+            {
+                status = "Obese";
+            }
+
             var userId = _userContext.UserId;
             if (userId == null)
             {
@@ -49,7 +68,8 @@ namespace Nutrigenius.Controllers
                 {
                     await conn.OpenAsync();
 
-                    string sql = @"INSERT INTO BMI (USERID, AGE, GENDER, HEIGHT, WEIGHT) VALUES (@UserID, @Age, @Gender, @Height, @Weight)";
+                    string sql = @"INSERT INTO BMI (USERID, AGE, GENDER, HEIGHT, WEIGHT, BMI, STATUS) 
+               VALUES (@UserID, @Age, @Gender, @Height, @Weight, @BMI, @Status)";
 
                     using (SqlCommand cmd = new SqlCommand(sql, conn))
                     {
@@ -58,6 +78,8 @@ namespace Nutrigenius.Controllers
                         cmd.Parameters.AddWithValue("@Gender", bmi.Gender);
                         cmd.Parameters.AddWithValue("@Height", bmi.Height);
                         cmd.Parameters.AddWithValue("@Weight", bmi.Weight);
+                        cmd.Parameters.AddWithValue("@BMI", calculatedBmi);
+                        cmd.Parameters.AddWithValue("@Status", status);
 
                         int rowsAffected = await cmd.ExecuteNonQueryAsync();
 
