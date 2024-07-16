@@ -53,9 +53,9 @@ const DietPlan = () => {
                     <label>Diabetes</label>
                     <select value={diabetes} onChange={(e) => setDiabetes(e.target.value)} required>
                         <option value="">Select Level</option>
-                        <option value="low">Low</option>
-                        <option value="medium">Medium</option>
-                        <option value="high">High</option>
+                        <option value="low">Level 1 (70-99 mg/dL)</option>
+                        <option value="medium">Level 2 (100-125 mg/dL)</option>
+                        <option value="high">Level 3 (126 mg/dL or Higher)</option>
                     </select>
                 </div>
                 
@@ -63,9 +63,9 @@ const DietPlan = () => {
                     <label>Cholesterol</label>
                     <select value={cholesterol} onChange={(e) => setCholesterol(e.target.value)} required>
                         <option value="">Select Level</option>
-                        <option value="low">Low</option>
-                        <option value="medium">Medium</option>
-                        <option value="high">High</option>
+                        <option value="low">Level 1 (Less than 200 mg/dL)</option>
+                        <option value="medium">Level 2 (200-239 mg/dL)</option>
+                        <option value="high">Level 3 (240mg/dL and Above)</option>
                     </select>
                 </div>
                 
@@ -73,9 +73,9 @@ const DietPlan = () => {
                     <label>Thyroid Disorders</label>
                     <select value={thyroid} onChange={(e) => setThyroid(e.target.value)} required>
                         <option value="">Select Level</option>
-                        <option value="low">Low</option>
-                        <option value="medium">Medium</option>
-                        <option value="high">High</option>
+                        <option value="low">Level 1</option>
+                        <option value="medium">Level 2</option>
+                        <option value="high">Level 3</option>
                     </select>
                 </div>
                 
@@ -83,9 +83,9 @@ const DietPlan = () => {
                     <label>Heart Disease</label>
                     <select value={heartDisease} onChange={(e) => setHeartDisease(e.target.value)} required>
                         <option value="">Select Level</option>
-                        <option value="low">Low</option>
-                        <option value="medium">Medium</option>
-                        <option value="high">High</option>
+                        <option value="low">Level 1</option>
+                        <option value="medium">Level 2</option>
+                        <option value="high">Level 3</option>
                     </select>
                 </div>
                 
@@ -93,13 +93,13 @@ const DietPlan = () => {
                     <label>Depression</label>
                     <select value={depression} onChange={(e) => setDepression(e.target.value)} required>
                         <option value="">Select Level</option>
-                        <option value="low">Low</option>
-                        <option value="medium">Medium</option>
-                        <option value="high">High</option>
+                        <option value="low">Level 1</option>
+                        <option value="medium">Level 2</option>
+                        <option value="high">Level 3</option>
                     </select>
                 </div>
-
-                <button type="submit">Submit</button>
+                {/*<button type="submit">Submit</button>*/}
+                <button type="submit" onClick={() => navigate('/meal')}>Submit</button>
             </form>
         </div>
         <Footer/>
