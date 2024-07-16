@@ -3,7 +3,7 @@
     public class BMI
     {
         public int UserId { get; set; }
-        public string Age { get; set; }
+        public int Age { get; set; }
         public string Gender { get; set; }
         public decimal Height { get; set; }
         public decimal Weight { get; set; }

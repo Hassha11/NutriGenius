@@ -10,6 +10,7 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import DietPlan from './Components/DietPlan/DietPlan';
 import Header from './Components/Header/Header';
 import Home from './Components/Home/Home';
+import Meals from './Components/Meals/Meals';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard/>} />
         <Route path="/diet" element={<DietPlan/>} />
         <Route path="/header" element={<Header/>} />
+        <Route path="/meals" element={<Meals />} />
       </Routes>
     </div>
     </Router>

@@ -18,6 +18,7 @@ namespace Nutrigenius.Models
         public string Password { get; set; }
 
         public string ConfirmPass { get; set; }
+
     }
 }
 

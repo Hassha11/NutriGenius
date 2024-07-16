@@ -1,6 +1,6 @@
 .wrapper-header {
     background-color: #222222;
-    padding: 1.5rem;
+    padding: 2rem;
     display: flex;
     justify-content: space-between; /* Distribute space between left and right sections */
     align-items: center;
@@ -26,7 +26,7 @@
 .signup-link {
     text-decoration: none;
     color: #f9f9f9; /* Adjust the color as needed */
-    transform: translateX(920px);
+    transform: translateX(900px);
 }
 
 .signup-link:hover {

@@ -1,7 +1,7 @@
 .wrapper {
     max-width: 180px; /* Adjusted width */
-    max-height: 280px; /* Adjusted height */
-    margin: 0 auto;
+    /*max-height: 280px; /* Adjusted height */
+    margin: 20 auto;
     padding: 10px 30px; /* Adjusted padding */
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -10,6 +10,13 @@
     border: 2px solid rgba(255, 255, 255, .2);
     backdrop-filter: blur(30px);
     color: #fff;
+}
+
+.layout {
+    display:contents;
+    flex-direction: column;
+    align-items:center;
+    min-height: 100vh;
 }
 
 h1 {
@@ -29,13 +36,13 @@ h1 {
 .input-box input,
 .input-box select {
     width: 100%;
-    height: 30px; /* Adjusted height */
-    padding: 5px; /* Adjusted padding */
+    height: 30px;
+    padding: 5px 10px; 
     border: 1px solid #fff;
     border-radius: 5px;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
-    font-size: 14px; /* Adjusted font size */
+    font-size: 14px; 
     color: #fff;
     background-color: transparent;
 }
@@ -44,52 +51,26 @@ h1 {
     color: #aaa;
     background-color: transparent;
     margin-top: 1px;
-}
-
-.flex-container {
-    display: flex;
     align-items: center;
-    justify-content: space-between;
 }
 
-
-
-button {
-    width: 50px; /* Adjusted width */
-    height: 25px; /* Adjusted height */
-    background: #fff;
-    border: none;
-    outline: none;
-    border-radius: 40px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-    cursor: pointer;
-    font-size: 16px; /* Adjusted font size */
-    color: #333;
-    font-weight: 700;
-    margin-bottom: 10px; /* Adjusted margin */
-    margin-right: 20px; /* Adjusted margin */
-    margin-top: -50px;
-}
-
-.flex-container {
+.flex-container-dietplan {
     display: flex;
     gap: 4px; /* Space between buttons */
-}
-
-.flex-container button {
-    padding: 5px 10px; /* Adjust padding */
-    font-size: 12px; /* Adjust font size */
-    height: 30px; /* Adjust height */
-    width: auto; /* Adjust width, auto will fit the text */
-    margin-top: -10px;
+    width: auto;
 }
 
 h4 {
-    margin-top: -20px;
+    margin-top: -40px;
 }
 
 button:hover {
     background-color: #fff;
 }
 
-
+.flex-container-dietplan {
+    display: flex;
+    gap: 5px; /* Space between buttons */
+    width: auto;
+    margin-top: -10px;
+}

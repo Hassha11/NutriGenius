@@ -26,9 +26,9 @@ namespace Nutrigenius.Controllers
         [HttpPost("BMI")]
         public async Task<IActionResult> BMI([FromBody] BMI bmi)
         {
-            if (bmi == null || string.IsNullOrEmpty(bmi.Age) || string.IsNullOrEmpty(bmi.Gender) || bmi.Height <= 0 || bmi.Weight <= 0)
+            if (bmi == null || bmi.Age <= 0 || string.IsNullOrEmpty(bmi.Gender) || bmi.Height <= 0 || bmi.Weight <= 0)
             {
-                return Unauthorized(new { message = "Invalid input data" });
+                return BadRequest(new { message = "Invalid input data" });
             }
 
             // Convert height from cm to m
@@ -56,11 +56,27 @@ namespace Nutrigenius.Controllers
                 status = "Obese";
             }
 
+            // Get the logged-in user's ID
+            //var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            //if (userId == null)
+            //{
+            //    return Unauthorized(new { message = "User is not authenticated" });
+            //}
+
+            // Retrieve and parse the user ID from claims
+            //var userIdString = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            //if (string.IsNullOrEmpty(userIdString) || !int.TryParse(userIdString, out int userId) || userId <= 0)
+            //{
+            //    return Unauthorized(new { message = "User is not authenticated or user ID is invalid" });
+            //}
+
             var userId = _userContext.UserId;
             if (userId == null)
             {
                 return Unauthorized(new { message = "User is not authenticated" });
             }
+
+            _userContext.UserId = userId;
 
             try
             {
@@ -68,28 +84,29 @@ namespace Nutrigenius.Controllers
                 {
                     await conn.OpenAsync();
 
-                    string sql = @"INSERT INTO BMI (USERID, AGE, GENDER, HEIGHT, WEIGHT, BMI, STATUS) 
-               VALUES (@UserID, @Age, @Gender, @Height, @Weight, @BMI, @Status)";
+                    // Insert new BMI record
+                    string insertSql = @"INSERT INTO BMI (UserId, Age, Gender, Height, Weight, BMI, Status)
+                             VALUES (@UserId, @Age, @Gender, @Height, @Weight, @BMI, @Status)";
 
-                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    using (SqlCommand insertCmd = new SqlCommand(insertSql, conn))
                     {
-                        cmd.Parameters.AddWithValue("@UserID", userId);
-                        cmd.Parameters.AddWithValue("@Age", bmi.Age);
-                        cmd.Parameters.AddWithValue("@Gender", bmi.Gender);
-                        cmd.Parameters.AddWithValue("@Height", bmi.Height);
-                        cmd.Parameters.AddWithValue("@Weight", bmi.Weight);
-                        cmd.Parameters.AddWithValue("@BMI", calculatedBmi);
-                        cmd.Parameters.AddWithValue("@Status", status);
+                        insertCmd.Parameters.AddWithValue("@UserId", userId);
+                        insertCmd.Parameters.AddWithValue("@Age", bmi.Age);
+                        insertCmd.Parameters.AddWithValue("@Gender", bmi.Gender);
+                        insertCmd.Parameters.AddWithValue("@Height", bmi.Height);
+                        insertCmd.Parameters.AddWithValue("@Weight", bmi.Weight);
+                        insertCmd.Parameters.AddWithValue("@BMI", calculatedBmi);
+                        insertCmd.Parameters.AddWithValue("@Status", status);
 
-                        int rowsAffected = await cmd.ExecuteNonQueryAsync();
+                        int rowsInserted = await insertCmd.ExecuteNonQueryAsync();
 
-                        if (rowsAffected > 0)
+                        if (rowsInserted > 0)
                         {
                             return Ok(new { message = "BMI calculation and record insertion successful", bmi = calculatedBmi });
                         }
                         else
                         {
-                            return Unauthorized(new { message = "Failed to insert BMI record" });
+                            return StatusCode(StatusCodes.Status500InternalServerError, "Failed to insert BMI record");
                         }
                     }
                 }
