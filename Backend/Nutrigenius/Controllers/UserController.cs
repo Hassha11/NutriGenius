@@ -19,10 +19,10 @@ namespace Nutrigenius.Controllers
             _connectionString = configuration.GetConnectionString("DefaultConnection");
         }
 
-        [HttpGet("User")]
-        public async Task<IActionResult> User([FromBody] Registration user)
+        [HttpPost("User")]
+        public async Task<IActionResult> User([FromBody] LoginRequest loginRequest)
         {
-            if (user == null || string.IsNullOrEmpty(user.Name) || string.IsNullOrEmpty(user.Gender) || string.IsNullOrEmpty(user.DOB) || string.IsNullOrEmpty(user.UserName) || string.IsNullOrEmpty(user.Password) || string.IsNullOrEmpty(user.ConfirmPass))
+            if (loginRequest == null || string.IsNullOrEmpty(loginRequest.UserName) || string.IsNullOrEmpty(loginRequest.Password))
             {
                 return Unauthorized(new { message = "0" });
             }
@@ -33,36 +33,50 @@ namespace Nutrigenius.Controllers
                 {
                     await conn.OpenAsync();
 
-                    // Start a transaction
-                    SqlTransaction transaction = conn.BeginTransaction();
+                    // Check if user exists and retrieve user details along with BMI details
+                    string sqlQuery = @"
+                        SELECT 
+                            r.NAME, r.GENDER, r.DOB, r.USERNAME, r.PASSWORD,
+                            b.Age, b.Height, b.Weight, b.BMI, b.Status
+                        FROM 
+                            LOGIN l
+                        INNER JOIN 
+                            REGISTRATION r ON l.USERID = r.USERID
+                        LEFT JOIN 
+                            BMI b ON r.USERID = b.UserID
+                        WHERE 
+                            l.USERNAME = @UserName AND l.PASSWORD = @Password";
 
-                    try
+                    using (SqlCommand cmd = new SqlCommand(sqlQuery, conn))
                     {
-                        string sqlInsertRegistration = @"
-                            SELECT NAME, GENDER, DOB, USERNAME, PASSWORD FROM REGISTRATION WHERE   ";
+                        cmd.Parameters.AddWithValue("@UserName", loginRequest.UserName);
+                        cmd.Parameters.AddWithValue("@Password", loginRequest.Password);
 
-                        int newUserId;
-                        using (SqlCommand cmd = new SqlCommand(sqlInsertRegistration, conn, transaction))
+                        using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
                         {
-                            cmd.Parameters.AddWithValue("@Name", user.Name);
-                            cmd.Parameters.AddWithValue("@Gender", user.Gender);
-                            cmd.Parameters.AddWithValue("@DOB", user.DOB);
-                            cmd.Parameters.AddWithValue("@UserName", user.UserName);
-                            cmd.Parameters.AddWithValue("@Password", user.Password);
+                            if (reader.Read())
+                            {
+                                var user = new
+                                {
+                                    Name = reader["NAME"].ToString(),
+                                    Gender = reader["GENDER"].ToString(),
+                                    DOB = reader["DOB"].ToString(),
+                                    UserName = reader["USERNAME"].ToString(),
+                                    Password = reader["PASSWORD"].ToString(),
+                                    Age = reader["Age"] != DBNull.Value ? Convert.ToInt32(reader["Age"]) : (int?)null,
+                                    Height = reader["Height"] != DBNull.Value ? Convert.ToDecimal(reader["Height"]) : (decimal?)null,
+                                    Weight = reader["Weight"] != DBNull.Value ? Convert.ToDecimal(reader["Weight"]) : (decimal?)null,
+                                    BMI = reader["BMI"] != DBNull.Value ? Convert.ToDecimal(reader["BMI"]) : (decimal?)null,
+                                    Status = reader["Status"].ToString()
+                                };
 
-                            newUserId = (int)await cmd.ExecuteScalarAsync();
+                                return Ok(user);
+                            }
+                            else
+                            {
+                                return Unauthorized(new { message = "0" });
+                            }
                         }
-
-                        // Commit the transaction
-                        transaction.Commit();
-
-                        return Ok(1);
-                    }
-                    catch (Exception)
-                    {
-                        // Rollback the transaction if any error occurs
-                        transaction.Rollback();
-                        throw;
                     }
                 }
             }
@@ -72,5 +86,10 @@ namespace Nutrigenius.Controllers
             }
         }
     }
-    
+
+    public class LoginRequest
+    {
+        public string UserName { get; set; }
+        public string Password { get; set; }
     }
+}

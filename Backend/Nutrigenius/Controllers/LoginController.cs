@@ -35,9 +35,11 @@ namespace Nutrigenius.Controllers
                 {
                     await conn.OpenAsync();
 
+                    string query = "SELECT USERID FROM LOGIN WHERE USERNAME = @Username AND PASSWORD = @Password ";
+
                     string sql = "SELECT COUNT(1) FROM Login WHERE USERNAME = @UserName AND PASSWORD = @Password";
 
-                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@UserName", login.UserName);
                         cmd.Parameters.AddWithValue("@Password", login.Password);

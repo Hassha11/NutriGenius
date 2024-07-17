@@ -1,6 +1,6 @@
 .wrapper {
     max-width: 180px; /* Adjusted width */
-    /*max-height: 280px; /* Adjusted height */
+    max-height: 260px; /* Adjusted height 
     margin: 20 auto;
     padding: 10px 30px; /* Adjusted padding */
     border: 1px solid #ccc;
@@ -30,6 +30,7 @@ h1 {
 .input-box {
     margin-bottom: 5px;
     margin-top: 1px;
+    margin-bottom: 10px; 
 }
 
 
@@ -45,6 +46,7 @@ h1 {
     font-size: 14px; 
     color: #fff;
     background-color: transparent;
+    margin-bottom: 10px; 
 }
 
 .input-box input::placeholder {
@@ -52,12 +54,14 @@ h1 {
     background-color: transparent;
     margin-top: 1px;
     align-items: center;
+    margin-bottom: 10px; 
 }
 
 .flex-container-dietplan {
     display: flex;
     gap: 4px; /* Space between buttons */
     width: auto;
+    margin-bottom: 10px; 
 }
 
 h4 {

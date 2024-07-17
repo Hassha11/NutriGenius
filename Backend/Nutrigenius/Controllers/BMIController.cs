@@ -7,6 +7,8 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Security.Claims;
+using Azure.Identity;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Nutrigenius.Controllers
 {
@@ -83,6 +85,9 @@ namespace Nutrigenius.Controllers
                 using (SqlConnection conn = new SqlConnection(_connectionString))
                 {
                     await conn.OpenAsync();
+
+                    //Select Uqueryser Details
+                    string query = "SELECT USERID FROM LOGIN WHERE USERNAME = @Username AND PASSWORD = @Password ";
 
                     // Insert new BMI record
                     string insertSql = @"INSERT INTO BMI (UserId, Age, Gender, Height, Weight, BMI, Status)
