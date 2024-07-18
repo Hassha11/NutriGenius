@@ -49,7 +49,7 @@ const BMIForm = () => {
         <div className='layout'>
             <Header />
             <Dashboard />
-            <div className='wrapper'>
+            <div style={{ marginTop: '40px' , height: '560px' }} className="wrapper">
                 <form onSubmit={handleBMI}>
                     <h1>BMI Calculation</h1>
                     <div className="input-box">
@@ -59,28 +59,28 @@ const BMIForm = () => {
                             <option value="female">Female</option>
                         </select>
                     </div>
-                    <div className="input-box">
+                    <div style={{ marginTop: '10px' }} className="input-box">
                         <input type="text" placeholder='Age' value={age} onChange={(e) => setAge(e.target.value)} required />
                     </div>
-                    <div className="input-box">
+                    <div style={{ marginTop: '10px' }} className="input-box">
                         <input type="text" placeholder='Height' value={height} onChange={(e) => setHeight(e.target.value)} required />
                     </div>
-                    <div className="input-box">
+                    <div style={{ marginTop: '10px' }} className="input-box">
                         <input type="text" placeholder='Weight' value={weight} onChange={(e) => setWeight(e.target.value)} required />
                     </div>
-                    <div className="flex-container">
-                        <button type="submit">Calculate</button>
-                        <div className="input-box">
+                    <div style={{ marginTop: '10px' }} className="flex-container">
+                        <button style={{ marginTop: '-25px' }} type="submit">Calculate</button>
+                        <div  style={{ marginTop: '10px' }} className="input-box">
                             <input type="text" placeholder='BMI' value={bmi} readOnly />
                         </div>
-                        <div className="input-box">
-                            <input type="text" placeholder='Status' value={status} readOnly />
+                        <div style={{ marginTop: '10px' }} className="input-box">
+                            <input style={{ width: '100px' }}  type="text" placeholder='Status' value={status} readOnly />
                         </div>
                     </div>
-                    <h4>Do you want a Diet Plan?</h4>
-                    <div className="flex-container-dietplan">
-                        <button type="button" onClick={() => navigate('/diet')}>Yes</button>
-                        <button type="button">No</button>
+                    <h4 style={{ marginTop: '-30px' }}>Do you want a Diet Plan?</h4>
+                    <div style={{ marginTop: '-10px' }} className="flex-container-dietplan">
+                        <button  style={{ marginTop: '20px' }} type="button" onClick={() => navigate('/diet')}>Yes</button>
+                        <button style={{ marginTop: '20px' }} type="button">No</button>
                     </div>
                 </form>
             </div>
