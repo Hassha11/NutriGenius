@@ -11,6 +11,8 @@ import DietPlan from './Components/DietPlan/DietPlan';
 import Header from './Components/Header/Header';
 import Home from './Components/Home/Home';
 import Meals from './Components/Meals/Meals';
+import Template from './Components/Template/Template';
+import DietitianReg from './Components/DietitianReg/DietitianReg';
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
         <Route path="/diet" element={<DietPlan/>} />
         <Route path="/header" element={<Header/>} />
         <Route path="/meals" element={<Meals />} />
+        <Route path="/template" element={<Template />} />
+        <Route path="/DiatetianReg" element={<DietitianReg />} />
       </Routes>
     </div>
     </Router>

@@ -45,11 +45,11 @@ const DietPlan = () => {
         <div className='layout'>
         <Header />
          <Dashboard />
-        <div className='wrapper'>
+        <div style={{ marginTop: '40px' , height: '570px' }} className='wrapper'>
             <form onSubmit={handleDiet}>
                 <h2>Request a Diet Plan</h2>
-                <h4>If you have bellow diseases please select the diseases' levels</h4>
-                <div className="input-box">
+                <h4 style={{ color: 'black'}}>If you have bellow diseases please select the diseases' levels</h4>
+                <div style={{ marginTop: '10px' }} className="input-box">
                     <label>Diabetes</label>
                     <select value={diabetes} onChange={(e) => setDiabetes(e.target.value)} required>
                         <option value="">Select Level</option>

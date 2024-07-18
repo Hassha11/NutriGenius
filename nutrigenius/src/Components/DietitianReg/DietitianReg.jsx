@@ -1,31 +1,31 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './RegistrationForm.css';
+import './DietitianReg.css';
 import Header from '../Header/Header';
 import Dashboard from '../Dashboard/Dashboard';
 import Footer from '../Footer/Footer';
 
-const RegistrationForm = () => {
+const DietitianReg = () => {
     const [name, setName] = useState('');
     const [gender, setGender] = useState('');
-    const [DOB, setDOB] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [confirmpass, setConfirmPass] = useState('');
+    const [qualifications, setQualifications] = useState('');
     const navigate = useNavigate();
 
-    const handleRegistration = async (event) => {
+    const handleDietitianReg = async (event) => {
         event.preventDefault();
 
         try {
             const response = await axios.post('http://localhost:5274/api/Registration/Registration', {
                 name: name,
                 gender: gender,
-                dob: DOB,
                 userName: username,
                 password: password,
                 confirmPass: confirmpass,
+                qualifications: qualifications
             });
 
             if (response.status === 200) {
@@ -43,12 +43,12 @@ const RegistrationForm = () => {
     };
 
     return (
-        <div className='layout'>
+        <div className='layout-dietitian'>
           <Header />
            <Dashboard />
-        <div style={{ marginTop: '40px' , height: '580px' }} className='wrapper'>
-            <form onSubmit={handleRegistration}>
-                <h1>Registration</h1>
+        <div style={{ marginTop: '40px' , height: '580px' }} className='wrapper-dietitian'>
+            <form onSubmit={handleDietitianReg}>
+                <h1>Dietitian Registration</h1>
                 <div style={{ marginTop: '10px' }} className="input-box">
                     <input
                         type="text"
@@ -68,16 +68,6 @@ const RegistrationForm = () => {
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                     </select>
-                </div>
-                <div style={{ marginTop: '10px' }} className="input-box">
-                    <label htmlFor="dob">Date of Birth</label>
-                    <input
-                        type="date"
-                        id="dob"
-                        value={DOB}
-                        onChange={(e) => setDOB(e.target.value)}
-                        required
-                    />
                 </div>
                 <div style={{ marginTop: '10px' }} className="input-box">
                     <input
@@ -106,6 +96,15 @@ const RegistrationForm = () => {
                         required
                     />
                 </div>
+                <div style={{ marginTop: '-6px' }} className="input-box">
+                    <input
+                        type="text"
+                        placeholder='Qualifications'
+                        value={qualifications}
+                        onChange={(e) => setQualifications(e.target.value)}
+                        required
+                    />
+                </div>
                 <button style={{ marginTop: '-2px' }} type="submit">Register</button>
             </form>
         </div>
@@ -114,4 +113,4 @@ const RegistrationForm = () => {
     );
 };
 
-export default RegistrationForm;
+export default DietitianReg;

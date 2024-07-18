@@ -1,0 +1,36 @@
+.wrapper-template {
+    max-width: 600px; /* Adjusted width */
+    max-height: 800px; /* Adjusted height 
+    margin: 20 auto;
+    padding: 10px 30px; /* Adjusted padding */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(30px);
+    color: #fff;
+}
+
+.layout-template {
+    display:contents;
+    flex-direction: column;
+    align-items:center;
+    min-height: 100vh;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 20px; /* Adjusted font size */
+    color: #fff;
+}
+
+.flex-container-template {
+    margin-top: 10px; /* Adjust margin for spacing */
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    color: #544f4f;
+}

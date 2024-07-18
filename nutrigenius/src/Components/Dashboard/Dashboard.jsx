@@ -16,16 +16,13 @@ const Layout = () => {
                         <Link to="/">Analysis</Link>
                     </li>
                     <li>
-                        <Link to="/user">User Profile</Link>
-                    </li>
-                    <li>
                         <Link to="/diet">Dietitian Recommendations</Link>
                     </li>
                     <li>
                         <Link to="/about">About</Link>
                     </li>
                     <li><br></br>
-                        <Link to="/">Log Out</Link>
+                        <Link style={{ marginTop: '250px', alignItems:'center' }} to="/">Log Out</Link>
                     </li>
                 </ul>
             </nav>
