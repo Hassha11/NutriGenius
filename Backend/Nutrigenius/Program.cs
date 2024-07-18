@@ -84,7 +84,7 @@ namespace Nutrigenius
             var databaseService = new DatabaseService();
             var userService = new UserService(userContext, databaseService);
 
-            userService.LoadUserId(123); // Example user ID
+            //userService.LoadUserId(123); // Example user ID
             Console.WriteLine($"UserId after loading: {userContext.UserId}");
         }
     }

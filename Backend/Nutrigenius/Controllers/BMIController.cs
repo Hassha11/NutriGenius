@@ -107,7 +107,7 @@ namespace Nutrigenius.Controllers
 
                         if (rowsInserted > 0)
                         {
-                            return Ok(new { message = "BMI calculation and record insertion successful", bmi = calculatedBmi });
+                            return Ok(new { message = "BMI calculation and record insertion successful", bmi = calculatedBmi, status });
                         }
                         else
                         {
