@@ -68,7 +68,7 @@ const User = () => {
             <Dashboard />
             <div style={{ marginTop: '5px', height: '460px' }} className='wrapper-user'>
                 <form onSubmit={handleSubmit}>
-                    <h2 style={{ marginTop: '-5px' }}>User Profile</h2>
+                    <h1 style={{ marginTop: '-5px', color: 'GrayText' }}>User Profile</h1>
                     <div className="input-box">
                         <input
                             type="text"

@@ -39,20 +39,20 @@ namespace Nutrigenius.Controllers
 
                     string sql = "SELECT COUNT(1) FROM Login WHERE USERNAME = @UserName AND PASSWORD = @Password";
 
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    using (SqlCommand cmd = new SqlCommand(sql, conn))
                     {
                         cmd.Parameters.AddWithValue("@UserName", login.UserName);
                         cmd.Parameters.AddWithValue("@Password", login.Password);
 
-                        int userCount = (int)await cmd.ExecuteScalarAsync();
+                        var result = await cmd.ExecuteScalarAsync();
 
-                        if (userCount > 0)
+                        if (result != null && int.TryParse(result.ToString(), out int userCount) && userCount > 0)
                         {
-                            return Ok(1); // Return the username if login is successful
+                            return Ok(1);
                         }
                         else
                         {
-                            return Unauthorized(new { message = "1" });
+                            return Unauthorized(new { message = "Invalid username or password." });
                         }
                     }
                 }

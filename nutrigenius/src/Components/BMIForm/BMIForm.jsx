@@ -63,10 +63,10 @@ const BMIForm = () => {
                         <input type="text" placeholder='Age' value={age} onChange={(e) => setAge(e.target.value)} required />
                     </div>
                     <div style={{ marginTop: '10px' }} className="input-box">
-                        <input type="text" placeholder='Height' value={height} onChange={(e) => setHeight(e.target.value)} required />
+                        <input type="text" placeholder='Height (cm)' value={height} onChange={(e) => setHeight(e.target.value)} required />
                     </div>
                     <div style={{ marginTop: '10px' }} className="input-box">
-                        <input type="text" placeholder='Weight' value={weight} onChange={(e) => setWeight(e.target.value)} required />
+                        <input type="text" placeholder='Weight (kg)' value={weight} onChange={(e) => setWeight(e.target.value)} required />
                     </div>
                     <div style={{ marginTop: '10px' }} className="flex-container">
                         <button style={{ marginTop: '-25px' }} type="submit">Calculate</button>
@@ -77,7 +77,7 @@ const BMIForm = () => {
                             <input style={{ width: '100px' }}  type="text" placeholder='Status' value={status} readOnly />
                         </div>
                     </div>
-                    <h4 style={{ marginTop: '-30px' }}>Do you want a Diet Plan?</h4>
+                    <h4 style={{ marginTop: '-30px', color: 'GrayText' }}>Do you want a Diet Plan?</h4>
                     <div style={{ marginTop: '-10px' }} className="flex-container-dietplan">
                         <button  style={{ marginTop: '20px' }} type="button" onClick={() => navigate('/diet')}>Yes</button>
                         <button style={{ marginTop: '20px' }} type="button">No</button>

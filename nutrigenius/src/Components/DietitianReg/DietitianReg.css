@@ -1,5 +1,5 @@
 .wrapper-dietitian {
-    max-width: 400px;
+    max-width: 420px;
     max-height: 600px;
     margin: 0 auto;
     padding: 20px 30px;
@@ -72,3 +72,52 @@ button {
 button:hover {
     background-color: #fff;
 }
+
+.flex-container{
+    display: flex;
+    align-items: center;
+}
+
+.qualification-box {
+    display: flex;
+    align-items: center;
+}
+
+.qualification-box input {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.qualification-box button {
+    flex-shrink: 0;
+}
+
+.flex-container {
+    display: flex;
+    align-items: center;
+}
+
+.qualification-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.qualification-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.delete-button {
+    background-color: rgb(39, 38, 38);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background-color: rgb(95, 91, 91);
+}
+

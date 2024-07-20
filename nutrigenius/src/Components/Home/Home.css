@@ -1,7 +1,14 @@
-.layout h1 {
+.layout-home {
     font-family: 'Roboto', sans-serif; /* Apply Roboto font to the h1 tag */
     /* Add any other styles as needed */
   }
   
+  .layout-home h2 {
+    color: black;
+    font-family: 'Edu TAS Beginner', sans-serif;
+  }
   
-  
+  .layout-home h3 {
+    color: black;
+    font-family: 'Edu TAS Beginner', sans-serif;
+  }

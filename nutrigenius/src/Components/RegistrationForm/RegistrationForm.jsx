@@ -30,7 +30,7 @@ const RegistrationForm = () => {
 
             if (response.status === 200) {
                 alert("Registration Success");
-                navigate('/'); 
+                navigate('/login'); 
             }
            
         } catch (error) {
@@ -70,7 +70,7 @@ const RegistrationForm = () => {
                     </select>
                 </div>
                 <div style={{ marginTop: '10px' }} className="input-box">
-                    <label htmlFor="dob">Date of Birth</label>
+                    <label style={{ color: 'GrayText' }} htmlFor="dob">Date of Birth</label>
                     <input
                         type="date"
                         id="dob"
@@ -106,7 +106,7 @@ const RegistrationForm = () => {
                         required
                     />
                 </div>
-                <button style={{ marginTop: '-2px' }} type="submit">Register</button>
+                <button style={{ marginTop: '-10px' }} type="submit">Register</button>
             </form>
         </div>
         <Footer/>

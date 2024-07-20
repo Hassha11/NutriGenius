@@ -27,6 +27,10 @@ h1 {
     color: #fff;
 }
 
+.wrapper-template h1 {
+    color: rgb(99, 96, 96);
+}
+
 .flex-container-template {
     margin-top: 10px; /* Adjust margin for spacing */
     display: flex;
