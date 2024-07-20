@@ -39,12 +39,12 @@ const Template = () => {
         <div className='layout-template'>
         <Header />
          <Dashboard />
-        <div style={{ marginTop: '20px', height: '150px', width: '300px', alignItems: 'center' }} className='wrapper-template'>
+        <div style={{ marginTop: '20px', height: '150px', width: '280px', alignItems: 'center' }} className='wrapper-template'>
             <form onSubmit={handleTemplate}>
-                <h1>Login As</h1>
-                <div style={{ marginTop: '-10px' }} className="flex-container-template">
-                        <button style={{ marginTop: '40px' }} type="button" onClick={() => navigate('/reg')}>User</button>
-                        <button style={{ marginTop: '40px' }} type="button" onClick={() => navigate('/DiatetianReg')}>Dietitian</button>
+                <h1>Register As</h1>
+                <div style={{ marginTop: '20px' }} className="flex-container-template">
+                        <button type="button" onClick={() => navigate('/reg')}>User</button>
+                        <button type="button" onClick={() => navigate('/DiatetianReg')}>Dietitian</button>
                </div>
             </form>
         </div>

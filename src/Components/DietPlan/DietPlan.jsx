@@ -45,9 +45,9 @@ const DietPlan = () => {
         <div className='layout'>
         <Header />
          <Dashboard />
-        <div style={{ marginTop: '40px' , height: '570px' }} className='wrapper'>
+        <div style={{ marginTop: '40px' , height: '580px' }} className='wrapper'>
             <form onSubmit={handleDiet}>
-                <h2>Request a Diet Plan</h2>
+                <h1 style={{ marginTop: '5px' }}>Request a Diet Plan</h1>
                 <h4 style={{ color: 'black'}}>If you have bellow diseases please select the diseases' levels</h4>
                 <div style={{ marginTop: '10px' }} className="input-box">
                     <label>Diabetes</label>

@@ -12,6 +12,7 @@
 .wrapper h1 {
     font-size: 36px;
     text-align: center;
+    color: rgb(99, 96, 96);
 }
 
 .wrapper .input-box {
@@ -35,7 +36,7 @@
 }
 
 .input-box input::placeholder {
-    color: #fff;
+    color: #979191;
 }
 
 .input-box .icon {
@@ -44,6 +45,7 @@
     top: 50%;
     transform: translateY(-50%);
     font-size: 16px;
+    color: #7e7a7a;
 }
 
 .wrapper .remember-forgot {
@@ -59,7 +61,7 @@
 }
 
 .remember-forgot a {
-    color: #fff;
+    color: #383535;
     text-decoration: none;
 }
 
@@ -88,7 +90,7 @@
 }
 
 .register-link p a {
-    color: #fff;
+    color: #383535;
     text-decoration: none;
     font-weight: 600;
 }

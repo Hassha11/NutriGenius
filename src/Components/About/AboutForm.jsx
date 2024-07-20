@@ -9,8 +9,11 @@ const AboutForm = () => {
         <Header />
          <Dashboard />
         <div>
-            <h2>About Form</h2>
-            <p>Place your about form fields here.</p>
+            <h1 style={{ color: 'GrayText', marginTop: '-220px', marginLeft: '-400px' }}>About Us</h1>
+            <p1><h3 style={{ marginTop: '30px', color: 'black', marginLeft: '60px', fontFamily: 'cursive'}}>We always try to give you a very healthy personalized Diet Plan</h3></p1>
+            <p2><h3 style={{ marginTop: '30px', color: 'black', marginLeft: '150px', fontFamily: 'cursive'}}>Contact Us</h3></p2>
+            <p3><h4 style={{ marginTop: '10px', color: 'black', marginLeft: '150px', fontFamily: 'cursive'}}>Email - nutrigenius@gmail.com</h4></p3>
+            <p3><h4 style={{ marginTop: '10px', color: 'black', marginLeft: '150px', fontFamily: 'cursive'}}>Tel - 011-2234323</h4></p3>
         </div>
         <Footer/>
         </div>

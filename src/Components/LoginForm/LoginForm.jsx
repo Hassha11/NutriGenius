@@ -54,14 +54,14 @@ const LoginForm = () => {
                 </div>
 
                 <div className="remember-forgot">
-                    <label><input type="checkbox"/>Remember me</label>
+                    <label style={{ color: 'GrayText' }}><input type="checkbox"/>Remember me</label>
                     <a href="/forgot">Forgot password?</a>
                 </div>
 
                 <button type="submit">Login</button>
 
                 <div className="register-link">
-                    <p>Don't have an account? <a href="/template">Register</a></p>
+                    <p style={{ color: 'GrayText' }}>Don't have an account? <a href="/template">Register</a></p>
                 </div>
             </form>
         </div>
