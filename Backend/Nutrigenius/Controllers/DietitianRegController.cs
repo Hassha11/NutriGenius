@@ -38,7 +38,7 @@ namespace Nutrigenius.Controllers
 
                     try
                     {
-                        // Insert into Registration table
+                        // Insert into Dietitian Registration table
                         string sqlInsertRegistration = @"
                             INSERT INTO DIETITIAN_REGISTRATION (NAME, GENDER, USERNAME, PASSWORD, CONFIRMPASSWORD, QUALIFICATIONS) 
                             OUTPUT INSERTED.USERID

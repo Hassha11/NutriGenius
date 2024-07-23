@@ -37,7 +37,7 @@ namespace Nutrigenius.Controllers
 
                     using (SqlCommand cmd = new SqlCommand(sql, conn))
                     {
-                        cmd.Parameters.AddWithValue("@Password", forgotPassword.Password); // In a real app, hash the password before storing it
+                        cmd.Parameters.AddWithValue("@Password", forgotPassword.Password); 
                         cmd.Parameters.AddWithValue("@UserName", forgotPassword.UserName);
 
                         int rowsAffected = await cmd.ExecuteNonQueryAsync();
