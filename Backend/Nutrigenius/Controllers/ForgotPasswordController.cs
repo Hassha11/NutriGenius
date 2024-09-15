@@ -19,6 +19,46 @@ namespace Nutrigenius.Controllers
             _connectionString = configuration.GetConnectionString("DefaultConnection");
         }
 
+        //[HttpPost("ResetPassword")] //16-09-2024
+        //public async Task<IActionResult> ResetPassword([FromBody] ForgotPassword forgotPassword)
+        //{
+        //    if (forgotPassword == null || string.IsNullOrEmpty(forgotPassword.UserName) || string.IsNullOrEmpty(forgotPassword.Password))
+        //    {
+        //        return BadRequest(new { message = "Invalid request" });
+        //    }
+
+        //    try
+        //    {
+        //        using (SqlConnection conn = new SqlConnection(_connectionString))
+        //        {
+        //            await conn.OpenAsync();
+
+        //            string sql = "UPDATE Login SET Password = @Password WHERE UserName = @UserName";
+
+        //            using (SqlCommand cmd = new SqlCommand(sql, conn))
+        //            {
+        //                cmd.Parameters.AddWithValue("@Password", forgotPassword.Password); 
+        //                cmd.Parameters.AddWithValue("@UserName", forgotPassword.UserName);
+
+        //                int rowsAffected = await cmd.ExecuteNonQueryAsync();
+
+        //                if (rowsAffected > 0)
+        //                {
+        //                    return Ok(new { message = "Password has been reset successfully" });
+        //                }
+        //                else
+        //                {
+        //                    return BadRequest(new { message = "Invalid username" });
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return StatusCode(StatusCodes.Status500InternalServerError, "Error: " + ex.Message);
+        //    }
+        //}
+
         [HttpPost("ResetPassword")]
         public async Task<IActionResult> ResetPassword([FromBody] ForgotPassword forgotPassword)
         {
@@ -33,18 +73,34 @@ namespace Nutrigenius.Controllers
                 {
                     await conn.OpenAsync();
 
-                    string sql = "UPDATE Login SET Password = @Password WHERE UserName = @UserName";
-
-                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    // First, attempt to update the password in the Login table
+                    string userUpdateSql = "UPDATE Login SET Password = @Password WHERE UserName = @UserName";
+                    using (SqlCommand userCmd = new SqlCommand(userUpdateSql, conn))
                     {
-                        cmd.Parameters.AddWithValue("@Password", forgotPassword.Password); 
-                        cmd.Parameters.AddWithValue("@UserName", forgotPassword.UserName);
+                        userCmd.Parameters.AddWithValue("@Password", forgotPassword.Password);
+                        userCmd.Parameters.AddWithValue("@UserName", forgotPassword.UserName);
 
-                        int rowsAffected = await cmd.ExecuteNonQueryAsync();
+                        int rowsAffectedInLogin = await userCmd.ExecuteNonQueryAsync();
 
-                        if (rowsAffected > 0)
+                        // If the update was successful in the Login table, return success
+                        if (rowsAffectedInLogin > 0)
                         {
                             return Ok(new { message = "Password has been reset successfully" });
+                        }
+                    }
+
+                    // If the username is not found in the Login table, try the Dietitian table
+                    string dietitianUpdateSql = "UPDATE DietLogin SET Password = @Password WHERE UserName = @UserName";
+                    using (SqlCommand dietitianCmd = new SqlCommand(dietitianUpdateSql, conn))
+                    {
+                        dietitianCmd.Parameters.AddWithValue("@Password", forgotPassword.Password);
+                        dietitianCmd.Parameters.AddWithValue("@UserName", forgotPassword.UserName);
+
+                        int rowsAffectedInDietitian = await dietitianCmd.ExecuteNonQueryAsync();
+
+                        if (rowsAffectedInDietitian > 0)
+                        {
+                            return Ok(new { message = "Password has been reset successfully for Dietitian" });
                         }
                         else
                         {
