@@ -13,7 +13,7 @@ const LoginForm = () => {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-    const handleLogin = async (event) => {
+    /*const handleLogin = async (event) => {
         event.preventDefault();
 
         try {
@@ -32,6 +32,33 @@ const LoginForm = () => {
                 alert("Login Unsuccess");
             } else {
             // setError('There was an error logging in!');
+                console.error('There was an error logging in!', error);
+            }
+        }
+    };*/
+
+    const handleLogin = async (event) => {
+        event.preventDefault();
+    
+        try {
+            const response = await axios.post('http://localhost:5274/api/Login/Login', {
+                userName: username,
+                password: password,
+            });
+    
+            if (response.status === 200) { //17
+                // Store user information in localStorage
+                localStorage.setItem('username', username);
+                localStorage.setItem('password', password);
+    
+                alert("Login Success");
+                navigate('/bmi'); 
+            } //
+    
+        } catch (error) {
+            if (error.response && error.response.status === 401) {
+                alert("Login Unsuccessful");
+            } else {
                 console.error('There was an error logging in!', error);
             }
         }
