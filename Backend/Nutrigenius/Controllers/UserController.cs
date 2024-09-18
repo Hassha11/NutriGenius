@@ -146,10 +146,10 @@ namespace Nutrigenius.Controllers
         [HttpGet("Profile")]
         public async Task<IActionResult> Profile(string userName, string password)
         {
-            if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
-            {
-                return BadRequest(new { message = "Username and password must be provided." });
-            }
+            //if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
+            //{
+            //    return BadRequest(new { message = "Please log into the system." });
+            //}
 
             try
 
@@ -210,6 +210,179 @@ namespace Nutrigenius.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error: " + ex.Message);
             }
         }
+
+
+        //[HttpDelete("UserProfile")]
+        //public async Task<IActionResult> UserProfile([FromBody] LoginRequest loginRequest)
+        //{
+        //    if (loginRequest == null || string.IsNullOrEmpty(loginRequest.UserName) || string.IsNullOrEmpty(loginRequest.Password))
+        //    {
+        //        return Unauthorized(new { message = "Invalid username or password" });
+        //    }
+
+        //    try
+        //    {
+        //        using (SqlConnection conn = new SqlConnection(_connectionString))
+        //        {
+        //            await conn.OpenAsync();
+
+        //            // Query to delete records from both Login and REGISTRATION tables
+        //            string sqlDeleteQuery = @"
+        //            DELETE FROM Login WHERE USERID = (SELECT USERID FROM REGISTRATION WHERE USERNAME = @UserName AND PASSWORD = @Password);
+        //            DELETE FROM REGISTRATION WHERE USERNAME = @UserName AND PASSWORD = @Password;";
+
+        //            using (SqlCommand cmd = new SqlCommand(sqlDeleteQuery, conn))
+        //            {
+        //                // Add parameters to the query
+        //                cmd.Parameters.AddWithValue("@UserName", loginRequest.UserName);
+        //                cmd.Parameters.AddWithValue("@Password", loginRequest.Password);
+
+        //                // Execute the DELETE command
+        //                int rowsAffected = await cmd.ExecuteNonQueryAsync();
+
+        //                // Check if any rows were deleted
+        //                if (rowsAffected > 0)
+        //                {
+        //                    return Ok(new { message = "User profile deleted successfully" });
+        //                }
+        //                else
+        //                {
+        //                    return Unauthorized(new { message = "Invalid username or password" });
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return StatusCode(StatusCodes.Status500InternalServerError, "Error: " + ex.Message);
+        //    }
+        //}
+
+        [HttpDelete("UserProfile")]
+        public async Task<IActionResult> UserProfile([FromBody] LoginRequest loginRequest)
+        {
+            if (loginRequest == null || string.IsNullOrEmpty(loginRequest.UserName) || string.IsNullOrEmpty(loginRequest.Password))
+            {
+                return Unauthorized(new { message = "Invalid username or password" });
+            }
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(_connectionString))
+                {
+                    await conn.OpenAsync();
+
+                    // Start a transaction to ensure both deletes succeed or fail together
+                    using (SqlTransaction transaction = conn.BeginTransaction())
+                    {
+                        try
+                        {
+                            // Query to get the USERID based on username and password
+                            string sqlGetUserIdQuery = "SELECT USERID FROM REGISTRATION WHERE USERNAME = @UserName AND PASSWORD = @Password";
+
+                            int userId = 0;
+                            using (SqlCommand cmdGetUserId = new SqlCommand(sqlGetUserIdQuery, conn, transaction))
+                            {
+                                cmdGetUserId.Parameters.AddWithValue("@UserName", loginRequest.UserName);
+                                cmdGetUserId.Parameters.AddWithValue("@Password", loginRequest.Password);
+
+                                object result = await cmdGetUserId.ExecuteScalarAsync();
+                                if (result == null)
+                                {
+                                    return Unauthorized(new { message = "Invalid username or password" });
+                                }
+                                userId = Convert.ToInt32(result);
+                            }
+
+                            // Delete from the Login table first (child table)
+                            string sqlDeleteLogin = "DELETE FROM Login WHERE USERID = @UserID";
+                            using (SqlCommand cmdDeleteLogin = new SqlCommand(sqlDeleteLogin, conn, transaction))
+                            {
+                                cmdDeleteLogin.Parameters.AddWithValue("@UserID", userId);
+                                await cmdDeleteLogin.ExecuteNonQueryAsync();
+                            }
+
+                            // Then delete from the Registration table (parent table)
+                            string sqlDeleteRegistration = "DELETE FROM REGISTRATION WHERE USERID = @UserID";
+                            using (SqlCommand cmdDeleteRegistration = new SqlCommand(sqlDeleteRegistration, conn, transaction))
+                            {
+                                cmdDeleteRegistration.Parameters.AddWithValue("@UserID", userId);
+                                await cmdDeleteRegistration.ExecuteNonQueryAsync();
+                            }
+
+                            // Commit the transaction
+                            transaction.Commit();
+
+                            return Ok(new { message = "User profile deleted successfully" });
+                        }
+                        catch (Exception ex)
+                        {
+                            // Rollback the transaction in case of error
+                            transaction.Rollback();
+                            return StatusCode(StatusCodes.Status500InternalServerError, "Error: " + ex.Message);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error: " + ex.Message);
+            }
+        }
+
+
+
+        [HttpPut("UserProfile")]
+        public async Task<IActionResult> UpdateUserProfile([FromBody] UpdateProfileRequest updateProfileRequest)
+        {
+            if (updateProfileRequest == null || string.IsNullOrEmpty(updateProfileRequest.UserName) || string.IsNullOrEmpty(updateProfileRequest.Password))
+            {
+                return Unauthorized(new { message = "Invalid username or password" });
+            }
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(_connectionString))
+                {
+                    await conn.OpenAsync();
+
+                    string sqlUpdateQuery = @"
+                           UPDATE REGISTRATION 
+                           SET NAME = @Name, GENDER = @Gender, DOB = @Dob
+                           WHERE USERNAME = @UserName AND PASSWORD = @Password;
+
+                           UPDATE Login
+                           SET USERNAME = @UserName
+                           WHERE USERID = (SELECT USERID FROM REGISTRATION WHERE USERNAME = @UserName AND PASSWORD = @Password);";
+
+                    using (SqlCommand cmd = new SqlCommand(sqlUpdateQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Name", updateProfileRequest.Name);
+                        cmd.Parameters.AddWithValue("@Gender", updateProfileRequest.Gender);
+                        cmd.Parameters.AddWithValue("@Dob", updateProfileRequest.DOB);
+                        cmd.Parameters.AddWithValue("@UserName", updateProfileRequest.UserName);
+                        cmd.Parameters.AddWithValue("@Password", updateProfileRequest.Password);
+
+                        // Execute the UPDATE command
+                        int rowsAffected = await cmd.ExecuteNonQueryAsync();
+
+                        if (rowsAffected > 0)
+                        {
+                            return Ok(new { message = "User profile updated successfully" });
+                        }
+                        else
+                        {
+                            return Unauthorized(new { message = "Invalid username or password" });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error: " + ex.Message);
+            }
+        }
+
     }
 
     public class LoginRequest
@@ -217,4 +390,14 @@ namespace Nutrigenius.Controllers
         public string UserName { get; set; }
         public string Password { get; set; }
     }
+
+    public class UpdateProfileRequest
+    {
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        public string Name { get; set; }
+        public string Gender { get; set; }
+        public string DOB { get; set; }
+    }
+
 }

@@ -118,6 +118,9 @@ const User = () => {
                     const response = await axios.get(`http://localhost:5274/api/User/Profile`, {
                    //const response = await axios.get(`http://localhost:5274/api/User/Profile?userName=${storedUsername}&password=${storedPassword}`, {
                         params: {
+                            name:name ,
+                            gender: gender,
+                            dob:dob,
                             userName: storedUsername,
                             password: storedPassword
                         }
@@ -132,11 +135,11 @@ const User = () => {
                         // Logging the profile data
                         console.log('Profile Data:', profileData);
 
-                        setName(profileData.Name);
-                        setGender(profileData.Gender);
-                        setDOB(profileData.DOB);
-                        setUsername(profileData.UserName);
-                        setPassword(profileData.Password);
+                        setName(profileData.name);
+                        setGender(profileData.gender);
+                        setDOB(profileData.dob);
+                        setUsername(profileData.userName);
+                        setPassword(profileData.password);
                     }
                 } catch (error) {
                     console.error('There was an error fetching profile data!', error);
@@ -150,13 +153,73 @@ const User = () => {
 
         fetchProfileData();
     }, []);  
+  
+    const handleDelete = async (event) => {
+        event.preventDefault();
+        const uniqueId = event.target.getAttribute('data-id');
 
+        if(uniqueId ==='Update'){
+            try {
+                const response = await axios.put('http://localhost:5274/api/User/UserProfile', {
+                    userName: username,
+                    password: password,
+                    name: name,
+                    gender: gender,
+                    dob: dob
+                });
+
+                if (response.status === 200) {
+                    alert("User profile updated successfully");
+                    
+                    const updatedData = response.data;
+                    setName(updatedData.name);
+                    setGender(updatedData.gender);
+                    setDOB(updatedData.dob);
+                    setUsername(updatedData.userName);
+                    setPassword(updatedData.password);
+                } else {
+                    alert("Failed to update user profile");
+                }
+            } catch (error) {
+                console.error('There was an error updating the user profile!', error);
+                setError('Failed to update user profile');
+            }
+    }
+    if(uniqueId ==='Delete'){
+        try {
+
+            const response = await axios.delete('http://localhost:5274/api/User/UserProfile', {
+                data: {
+                    userName: username,  
+                    password: password   
+                }
+            });
+
+            console.log('Delete Response:', response);
+
+            if (response.status === 200) {
+                alert("User profile deleted successfully");
+               
+                localStorage.removeItem('userId');
+                localStorage.removeItem('username');
+                localStorage.removeItem('password');
+                navigate('/');  
+            } else {
+                alert("Failed to delete user profile");
+            }
+        } catch (error) {
+            console.error('There was an error deleting the user!', error);
+            setError('Failed to delete user profile');
+        }
+    }
+    };
+    
     return (
         <div className='layout'>
             <Header />
             <Dashboard />
-            <div style={{ marginTop: '5px', height: '460px' }} className='wrapper-user'>
-                <form onSubmit={handleSubmit}>
+            <div style={{ marginTop: '5px', height: '520px' }} className='wrapper-user'>
+              
                     <h1 style={{ marginTop: '-5px', color: 'GrayText' }}>User Profile</h1>
                     <div className="input-box">
                         <input
@@ -199,10 +262,11 @@ const User = () => {
                         />
                     </div>
                     <div style={{ marginTop: '-15px'}}className="button-user">
-                        <button type="submit">Update</button>
-                        <button type="submit">Delete</button>
+                    <button type="button" data-id="Update" onClick={(event) => handleDelete(event)}>Update</button>
+                    <button type="button" data-id="Delete" onClick={(event) => handleDelete(event)}>Delete</button>
+ 
                     </div>
-                </form>
+                
                 {error && <p className="error">{error}</p>}
             </div>
             <Footer />
