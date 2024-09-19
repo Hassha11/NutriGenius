@@ -10,10 +10,16 @@ import Footer from '../Footer/Footer';
 const ForgotPassword = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const navigate = useNavigate();
 
     const handleForgot = async (event) => {
         event.preventDefault();
+
+        if (password !== confirmPassword) {
+            alert("New Password and Confirm Password do not match");
+            return; // Exit the function to prevent the form submission
+        }
 
         try {
             const response = await axios.post('http://localhost:5274/api/ForgotPassword/ResetPassword', {
@@ -24,6 +30,10 @@ const ForgotPassword = () => {
             if (response.status === 200) {
                 alert("Password change Success");
                 navigate('/login'); 
+            }
+
+            if (response.status !== 200) {
+                alert("Please enter the correct username");
             }
            
         } catch (error) {
@@ -50,7 +60,7 @@ const ForgotPassword = () => {
                     <input type="password" placeholder='New Password' value={password} onChange={(e) => setPassword(e.target.value)} required/>
                 </div>
                 <div className="input-box">
-                    <input type="password" placeholder='Confirm Password' required/>
+                <input type="password" placeholder='Confirm Password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
                 </div>
                 <button type="submit">Submit</button>
 

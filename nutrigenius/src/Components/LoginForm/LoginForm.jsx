@@ -51,9 +51,18 @@ const LoginForm = () => {
                 localStorage.setItem('username', username);
                 localStorage.setItem('password', password);
     
+                //alert("Login Success");
+                //navigate('/bmi'); 
+            } //
+
+            if (response.data.userType === 'User') {
                 alert("Login Success");
                 navigate('/bmi'); 
-            } //
+
+            } else if (response.data.userType === 'Dietitian') {
+                alert("Login Success");
+                navigate('/'); 
+            }
     
         } catch (error) {
             if (error.response && error.response.status === 401) {

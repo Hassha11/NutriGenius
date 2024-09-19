@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Nutrigenius")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d788b729b20c9ca1923362389c0771df1f34b7d8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6fe57dab81bd26860438f46de14330a993d7209a")]
 [assembly: System.Reflection.AssemblyProductAttribute("Nutrigenius")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Nutrigenius")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

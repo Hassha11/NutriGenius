@@ -1,16 +1,16 @@
 .wrapper-footer {
     background-color: #191a1a;
-    padding: 5rem; /* Reduced padding to make it thinner */
+    padding: 5rem; 
     display: flex;
-    justify-content: space-between; /* Distribute space between left and right sections */
+    justify-content: space-between; 
     align-items: center;
-    width: calc(100% - 180px); /* Adjust the width to account for the sidebar */
+    width: calc(100% - 180px); 
     width: 100%;
-    margin: 0 auto; /* Center the footer if it's not full-width */
+    margin: 0 auto; 
     position:absolute; 
-    bottom: 0; /* Align to the bottom of the viewport */
+    bottom: 0; 
     top: 660px;
-    left: 0px; /* Adjust to match the width of the sidebar */
+    left: 0px; 
 }
 
 ul li {
@@ -27,26 +27,27 @@ ul li a {
 
 .wrapper-footer ul {
     list-style-type: none; /* Remove default list item bullets */
-    padding: 0; /* Remove default padding */
-    text-align: center; /* Center align the list items */
+    padding: 0; 
+    text-align: center; 
 }
 
 .flex-container li {
     padding: 10px 15px;
-    text-align: center; /* Center align the text within list items */
+    text-align: center; 
+    margin: 0 60px;
 }
 
 
 .wrapper-footer h1 {
-    margin-bottom: 20px; /* Adjust spacing */
-    margin-top: -10px; /* Move up the h1 */
-    text-align: left; /* Align text to the left */
-    color: white; /* Text color */
+    margin-bottom: 20px; 
+    margin-top: 3px; 
+    text-align: left; 
+    color: white; 
 }
 
 .wrapper-footer ul li a {
     color: white;
     text-decoration: none;
     display: block;
-    margin-top: 10px; /* Adjust top margin */
+    margin-top: 0px; 
 }

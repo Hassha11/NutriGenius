@@ -7,15 +7,15 @@
       "RelativeMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|solutionrelative:controllers\\forgotpasswordcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|d:\\nutrigenius\\backend\\nutrigenius\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|solutionrelative:controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|d:\\nutrigenius\\backend\\nutrigenius\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\HP\\AppData\\Local\\SourceServer\\9b551b913efa2563c782d8a7be7407f34d6983c8f49b924fa3022540c7c73717\\Backend\\Nutrigenius\\Controllers\\UserController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|d:\\nutrigenius\\backend\\nutrigenius\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|solutionrelative:controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|d:\\nutrigenius\\backend\\nutrigenius\\controllers\\registrationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -131,22 +131,23 @@
               "RelativeDocumentMoniker": "Controllers\\ForgotPasswordController.cs",
               "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\Controllers\\ForgotPasswordController.cs",
               "RelativeToolTip": "Controllers\\ForgotPasswordController.cs",
-              "ViewState": "AQIAADsAAAAAAAAAAAAUwEgAAAAQAAAA",
+              "ViewState": "AQIAAFcAAAAAAAAAAAAcwGUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-19T17:30:24.357Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "LoginController.cs",
               "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\Controllers\\LoginController.cs",
               "RelativeDocumentMoniker": "Controllers\\LoginController.cs",
               "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\Controllers\\LoginController.cs",
               "RelativeToolTip": "Controllers\\LoginController.cs",
-              "ViewState": "AQIAAEAAAAAAAAAAAAAQwEcAAAANAAAA",
+              "ViewState": "AQIAAFcAAAAAAAAAAAAYwGsAAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-15T06:28:12.423Z"
+              "WhenOpened": "2024-06-15T06:28:12.423Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -162,7 +163,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "UserController.cs",
               "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "Controllers\\UserController.cs",
@@ -170,8 +171,7 @@
               "RelativeToolTip": "Controllers\\UserController.cs",
               "ViewState": "AQIAAAQAAAAAAAAAAAAUwBEAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-15T17:47:02.145Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-15T17:47:02.145Z"
             },
             {
               "$type": "Document",
@@ -187,7 +187,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\Users\\HP\\AppData\\Local\\SourceServer\\9b551b913efa2563c782d8a7be7407f34d6983c8f49b924fa3022540c7c73717\\Backend\\Nutrigenius\\Controllers\\UserController.cs",
               "ToolTip": "C:\\Users\\HP\\AppData\\Local\\SourceServer\\9b551b913efa2563c782d8a7be7407f34d6983c8f49b924fa3022540c7c73717\\Backend\\Nutrigenius\\Controllers\\UserController.cs",

@@ -105,7 +105,7 @@ namespace Nutrigenius.Controllers
 
                         if (rowsAffectedInLogin == 0)
                         {
-                            return Ok(new { message = "Please enter the correct username" });
+                            return Unauthorized(new { message = "Please enter the correct username" });
                         }
 
                     }
