@@ -102,6 +102,12 @@ namespace Nutrigenius.Controllers
 
                             return Ok(new { message = "Password has been reset successfully" });
                         }
+
+                        if (rowsAffectedInLogin == 0)
+                        {
+                            return Ok(new { message = "Please enter the correct username" });
+                        }
+
                     }
 
                     // If the username is not found in the Login table, try the Dietitian table
