@@ -28,7 +28,7 @@ const ForgotPassword = () => {
            
         } catch (error) {
             if (error.response && error.response.status === 401) {
-                alert("Password change Unsuccess");
+                alert("Please enter the correct username");
             } else {
             // setError('There was an error logging in!');
                 console.error('There was an error changing password!', error);
