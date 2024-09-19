@@ -71,10 +71,10 @@ const BMIForm = () => {
                     <div style={{ marginTop: '10px' }} className="flex-container">
                         <button style={{ marginTop: '-25px' }} type="submit">Calculate</button>
                         <div  style={{ marginTop: '10px' }} className="input-box">
-                            <input style={{ width: '110px' }} type="text" placeholder='BMI' value={bmi} readOnly />
+                            <input style={{ width: '120px' }} type="text" placeholder='BMI' value={bmi} readOnly />
                         </div>
                         <div style={{ marginTop: '10px' }} className="input-box">
-                            <input style={{ width: '100px' }}  type="text" placeholder='Status' value={status} readOnly />
+                            <input style={{ width: '120px' }}  type="text" placeholder='Status' value={status} readOnly />
                         </div>
                     </div>
                     <h4 style={{ marginTop: '-30px', color: 'GrayText' }}>Do you want a Diet Plan?</h4>

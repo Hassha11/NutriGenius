@@ -17,9 +17,6 @@ return (
                         <Link to="/">Analysis</Link>
                     </li>
                     <li>
-                        <Link to="/user">User Profile</Link>
-                    </li>
-                    <li>
                         <Link to="/diet">Dietitian Recommendations</Link>
                     </li>
                     <li>
