@@ -66,7 +66,7 @@ const LoginForm = () => {
     
         } catch (error) {
             if (error.response && error.response.status === 401) {
-                alert("Login Unsuccessful");
+                alert("Login Unsuccess");
             } else {
                 console.error('There was an error logging in!', error);
             }
