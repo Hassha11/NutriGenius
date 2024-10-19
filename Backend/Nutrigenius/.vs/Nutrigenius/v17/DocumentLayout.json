@@ -3,47 +3,67 @@
   "WorkspaceRootPath": "D:\\NutriGenius\\Backend\\Nutrigenius\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|d:\\nutrigenius\\backend\\nutrigenius\\controllers\\dietplancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|solutionrelative:controllers\\dietplancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|d:\\nutrigenius\\backend\\nutrigenius\\controllers\\bmicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|solutionrelative:controllers\\bmicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|d:\\nutrigenius\\backend\\nutrigenius\\controllers\\dietcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|solutionrelative:controllers\\dietcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|d:\\nutrigenius\\backend\\nutrigenius\\controllers\\forgotpasswordcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|solutionrelative:controllers\\forgotpasswordcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|d:\\nutrigenius\\backend\\nutrigenius\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|solutionrelative:controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|d:\\nutrigenius\\backend\\nutrigenius\\models\\userdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|solutionrelative:models\\userdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|d:\\nutrigenius\\backend\\nutrigenius\\userdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|solutionrelative:userdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|d:\\nutrigenius\\backend\\nutrigenius\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\HP\\AppData\\Local\\SourceServer\\9b551b913efa2563c782d8a7be7407f34d6983c8f49b924fa3022540c7c73717\\Backend\\Nutrigenius\\Controllers\\UserController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|d:\\nutrigenius\\backend\\nutrigenius\\models\\meals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|solutionrelative:models\\meals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|d:\\nutrigenius\\backend\\nutrigenius\\controllers\\registrationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|solutionrelative:controllers\\registrationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|d:\\nutrigenius\\backend\\nutrigenius\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|d:\\nutrigenius\\backend\\nutrigenius\\models\\forgotpassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|solutionrelative:models\\forgotpassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|d:\\nutrigenius\\backend\\nutrigenius\\models\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|solutionrelative:models\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|d:\\nutrigenius\\backend\\nutrigenius\\models\\forgotpassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|solutionrelative:models\\forgotpassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|d:\\nutrigenius\\backend\\nutrigenius\\controllers\\mealscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|solutionrelative:controllers\\mealscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|d:\\nutrigenius\\backend\\nutrigenius\\controllers\\dietplancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|solutionrelative:controllers\\dietplancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|d:\\nutrigenius\\backend\\nutrigenius\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|solutionrelative:controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\HP\\AppData\\Local\\SourceServer\\9b551b913efa2563c782d8a7be7407f34d6983c8f49b924fa3022540c7c73717\\Backend\\Nutrigenius\\Controllers\\UserController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|d:\\nutrigenius\\backend\\nutrigenius\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|d:\\nutrigenius\\backend\\nutrigenius\\controllers\\dietitianregcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|solutionrelative:controllers\\dietitianregcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|d:\\nutrigenius\\backend\\nutrigenius\\controllers\\bmicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|solutionrelative:controllers\\bmicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|d:\\nutrigenius\\backend\\nutrigenius\\models\\dietitianreg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -70,24 +90,12 @@
       "RelativeMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|solutionrelative:sys.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|d:\\nutrigenius\\backend\\nutrigenius\\userdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|solutionrelative:userdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|d:\\nutrigenius\\backend\\nutrigenius\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|d:\\nutrigenius\\backend\\nutrigenius\\models\\bmi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|solutionrelative:models\\bmi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|d:\\nutrigenius\\backend\\nutrigenius\\models\\meals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|solutionrelative:models\\meals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|d:\\nutrigenius\\backend\\nutrigenius\\controllers\\mealscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|solutionrelative:controllers\\mealscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{27067AF0-58B9-4943-A987-1DBC4A316E7E}|Nutrigenius.csproj|d:\\nutrigenius\\backend\\nutrigenius\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -105,7 +113,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -113,7 +121,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 6,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
+              "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Controllers\\UserController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T17:47:02.145Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "ForgotPassword.cs",
               "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\Models\\ForgotPassword.cs",
               "RelativeDocumentMoniker": "Models\\ForgotPassword.cs",
@@ -125,234 +145,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ForgotPasswordController.cs",
-              "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\Controllers\\ForgotPasswordController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ForgotPasswordController.cs",
-              "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\Controllers\\ForgotPasswordController.cs",
-              "RelativeToolTip": "Controllers\\ForgotPasswordController.cs",
-              "ViewState": "AQIAAFYAAAAAAAAAAAAqwIwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-19T17:30:24.357Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "LoginController.cs",
-              "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\Controllers\\LoginController.cs",
-              "RelativeDocumentMoniker": "Controllers\\LoginController.cs",
-              "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\Controllers\\LoginController.cs",
-              "RelativeToolTip": "Controllers\\LoginController.cs",
-              "ViewState": "AQIAAFcAAAAAAAAAAAAYwGsAAAAnAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-15T06:28:12.423Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "RegistrationController.cs",
-              "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\Controllers\\RegistrationController.cs",
-              "RelativeDocumentMoniker": "Controllers\\RegistrationController.cs",
-              "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\Controllers\\RegistrationController.cs",
-              "RelativeToolTip": "Controllers\\RegistrationController.cs",
-              "ViewState": "AQIAADcAAAAAAAAAAAAUwA4AAAAyAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-17T16:49:06.56Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
-              "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\Controllers\\UserController.cs",
-              "RelativeToolTip": "Controllers\\UserController.cs",
-              "ViewState": "AQIAAAQAAAAAAAAAAAAUwBEAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-15T17:47:02.145Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "DietPlanController.cs",
-              "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\Controllers\\DietPlanController.cs",
-              "RelativeDocumentMoniker": "Controllers\\DietPlanController.cs",
-              "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\Controllers\\DietPlanController.cs",
-              "RelativeToolTip": "Controllers\\DietPlanController.cs",
-              "ViewState": "AQIAABgAAAAAAAAAAAAowCUAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T15:38:12.847Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\AppData\\Local\\SourceServer\\9b551b913efa2563c782d8a7be7407f34d6983c8f49b924fa3022540c7c73717\\Backend\\Nutrigenius\\Controllers\\UserController.cs",
-              "ToolTip": "C:\\Users\\HP\\AppData\\Local\\SourceServer\\9b551b913efa2563c782d8a7be7407f34d6983c8f49b924fa3022540c7c73717\\Backend\\Nutrigenius\\Controllers\\UserController.cs",
-              "ViewState": "AQIAADkAAAAAAAAAAAAAAJMAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T10:17:35.354Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAC0AAAAAAAAAAADwv0sAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T04:12:05.238Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Login.cs",
-              "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\Models\\Login.cs",
-              "RelativeDocumentMoniker": "Models\\Login.cs",
-              "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\Models\\Login.cs",
-              "RelativeToolTip": "Models\\Login.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAkAAAAeAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-14T17:18:43.198Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "DietitianRegController.cs",
-              "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\Controllers\\DietitianRegController.cs",
-              "RelativeDocumentMoniker": "Controllers\\DietitianRegController.cs",
-              "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\Controllers\\DietitianRegController.cs",
-              "RelativeToolTip": "Controllers\\DietitianRegController.cs",
-              "ViewState": "AQIAACgAAAAAAAAAAAAUwCgAAAAxAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-19T15:30:41.42Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "BMIController.cs",
-              "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\Controllers\\BMIController.cs",
-              "RelativeDocumentMoniker": "Controllers\\BMIController.cs",
-              "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\Controllers\\BMIController.cs",
-              "RelativeToolTip": "Controllers\\BMIController.cs",
-              "ViewState": "AQIAABoAAAAAAAAAAAAAAG8AAAAcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-18T16:43:29.193Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "SQLQuerys.cs",
-              "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\SQLQuerys.cs",
-              "RelativeDocumentMoniker": "SQLQuerys.cs",
-              "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\SQLQuerys.cs",
-              "RelativeToolTip": "SQLQuerys.cs",
-              "ViewState": "AQIAAAQAAAAAAAAAAAAAAAQAAAAUAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-17T13:49:49.589Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "UserContext.cs",
-              "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\Models\\UserContext.cs",
-              "RelativeDocumentMoniker": "Models\\UserContext.cs",
-              "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\Models\\UserContext.cs",
-              "RelativeToolTip": "Models\\UserContext.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAnAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-11T18:48:10.135Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "DietitianReg.cs",
-              "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\Models\\DietitianReg.cs",
-              "RelativeDocumentMoniker": "Models\\DietitianReg.cs",
-              "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\Models\\DietitianReg.cs",
-              "RelativeToolTip": "Models\\DietitianReg.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAlAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-19T15:30:16.425Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "DatabaseService.cs",
-              "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\Services\\DatabaseService.cs",
-              "RelativeDocumentMoniker": "Services\\DatabaseService.cs",
-              "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\Services\\DatabaseService.cs",
-              "RelativeToolTip": "Services\\DatabaseService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-12T19:43:04.19Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "UserService.cs",
-              "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\Services\\UserService.cs",
-              "RelativeDocumentMoniker": "Services\\UserService.cs",
-              "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\Services\\UserService.cs",
-              "RelativeToolTip": "Services\\UserService.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAASwBQAAAAPAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-12T19:42:02.788Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "UserDetails.cs",
-              "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\UserDetails.cs",
-              "RelativeDocumentMoniker": "UserDetails.cs",
-              "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\UserDetails.cs",
-              "RelativeToolTip": "UserDetails.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-17T13:43:48.272Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "SYS.cs",
-              "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\SYS.cs",
-              "RelativeDocumentMoniker": "SYS.cs",
-              "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\SYS.cs",
-              "RelativeToolTip": "SYS.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAA6AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-19T10:10:24.342Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "User.cs",
-              "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\Models\\User.cs",
-              "RelativeDocumentMoniker": "Models\\User.cs",
-              "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\Models\\User.cs",
-              "RelativeToolTip": "Models\\User.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-15T17:44:49.083Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "BMI.cs",
-              "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\Models\\BMI.cs",
-              "RelativeDocumentMoniker": "Models\\BMI.cs",
-              "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\Models\\BMI.cs",
-              "RelativeToolTip": "Models\\BMI.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-18T16:42:55.812Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 7,
               "Title": "Meals.cs",
               "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\Models\\Meals.cs",
               "RelativeDocumentMoniker": "Models\\Meals.cs",
@@ -364,31 +157,273 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 5,
+              "Title": "UserDetails.cs",
+              "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\UserDetails.cs",
+              "RelativeDocumentMoniker": "UserDetails.cs",
+              "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\UserDetails.cs",
+              "RelativeToolTip": "UserDetails.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-17T13:43:48.272Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Login.cs",
+              "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\Models\\Login.cs",
+              "RelativeDocumentMoniker": "Models\\Login.cs",
+              "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\Models\\Login.cs",
+              "RelativeToolTip": "Models\\Login.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-14T17:18:43.198Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DietPlanController.cs",
+              "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\Controllers\\DietPlanController.cs",
+              "RelativeDocumentMoniker": "Controllers\\DietPlanController.cs",
+              "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\Controllers\\DietPlanController.cs",
+              "RelativeToolTip": "Controllers\\DietPlanController.cs",
+              "ViewState": "AQIAACEAAAAAAAAAAAAYwCcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T15:38:12.847Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BMIController.cs",
+              "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\Controllers\\BMIController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BMIController.cs",
+              "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\Controllers\\BMIController.cs",
+              "RelativeToolTip": "Controllers\\BMIController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwBUAAABSAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-18T16:43:29.193Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ForgotPasswordController.cs",
+              "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\Controllers\\ForgotPasswordController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ForgotPasswordController.cs",
+              "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\Controllers\\ForgotPasswordController.cs",
+              "RelativeToolTip": "Controllers\\ForgotPasswordController.cs",
+              "ViewState": "AQIAAHwAAAAAAAAAAAAhwDQAAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T17:30:24.357Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DietController.cs",
+              "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\Controllers\\DietController.cs",
+              "RelativeDocumentMoniker": "Controllers\\DietController.cs",
+              "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\Controllers\\DietController.cs",
+              "RelativeToolTip": "Controllers\\DietController.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAAAiwA0AAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-18T19:12:58.019Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UserData.cs",
+              "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\Models\\UserData.cs",
+              "RelativeDocumentMoniker": "Models\\UserData.cs",
+              "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\Models\\UserData.cs",
+              "RelativeToolTip": "Models\\UserData.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-18T10:11:24.083Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "RegistrationController.cs",
+              "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\Controllers\\RegistrationController.cs",
+              "RelativeDocumentMoniker": "Controllers\\RegistrationController.cs",
+              "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\Controllers\\RegistrationController.cs",
+              "RelativeToolTip": "Controllers\\RegistrationController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T16:49:06.56Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "MealsController.cs",
               "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\Controllers\\MealsController.cs",
               "RelativeDocumentMoniker": "Controllers\\MealsController.cs",
               "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\Controllers\\MealsController.cs",
               "RelativeToolTip": "Controllers\\MealsController.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAiwCMAAAATAAAA",
+              "ViewState": "AQIAACEAAAAAAAAAAAAYwCMAAAATAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-16T15:24:41.25Z"
             },
             {
               "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "LoginController.cs",
+              "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\Controllers\\LoginController.cs",
+              "RelativeDocumentMoniker": "Controllers\\LoginController.cs",
+              "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\Controllers\\LoginController.cs",
+              "RelativeToolTip": "Controllers\\LoginController.cs",
+              "ViewState": "AQIAAFcAAAAAAAAAAAAYwGsAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-15T06:28:12.423Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\AppData\\Local\\SourceServer\\9b551b913efa2563c782d8a7be7407f34d6983c8f49b924fa3022540c7c73717\\Backend\\Nutrigenius\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\HP\\AppData\\Local\\SourceServer\\9b551b913efa2563c782d8a7be7407f34d6983c8f49b924fa3022540c7c73717\\Backend\\Nutrigenius\\Controllers\\UserController.cs",
+              "ViewState": "AQIAADYAAAAAAAAAAIBJwJMAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T10:17:35.354Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAC0AAAAAAAAAAADwv0sAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T04:12:05.238Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "DietitianRegController.cs",
+              "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\Controllers\\DietitianRegController.cs",
+              "RelativeDocumentMoniker": "Controllers\\DietitianRegController.cs",
+              "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\Controllers\\DietitianRegController.cs",
+              "RelativeToolTip": "Controllers\\DietitianRegController.cs",
+              "ViewState": "AQIAACgAAAAAAAAAAAAUwCgAAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-19T15:30:41.42Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "SQLQuerys.cs",
+              "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\SQLQuerys.cs",
+              "RelativeDocumentMoniker": "SQLQuerys.cs",
+              "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\SQLQuerys.cs",
+              "RelativeToolTip": "SQLQuerys.cs",
+              "ViewState": "AQIAAAEAAAAAAAAAAIBJwAQAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-17T13:49:49.589Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "UserContext.cs",
+              "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\Models\\UserContext.cs",
+              "RelativeDocumentMoniker": "Models\\UserContext.cs",
+              "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\Models\\UserContext.cs",
+              "RelativeToolTip": "Models\\UserContext.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-11T18:48:10.135Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "DietitianReg.cs",
+              "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\Models\\DietitianReg.cs",
+              "RelativeDocumentMoniker": "Models\\DietitianReg.cs",
+              "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\Models\\DietitianReg.cs",
+              "RelativeToolTip": "Models\\DietitianReg.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-19T15:30:16.425Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "DatabaseService.cs",
+              "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\Services\\DatabaseService.cs",
+              "RelativeDocumentMoniker": "Services\\DatabaseService.cs",
+              "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\Services\\DatabaseService.cs",
+              "RelativeToolTip": "Services\\DatabaseService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-12T19:43:04.19Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "Services\\UserService.cs",
+              "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\Services\\UserService.cs",
+              "RelativeToolTip": "Services\\UserService.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAASwBQAAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-12T19:42:02.788Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "SYS.cs",
+              "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\SYS.cs",
+              "RelativeDocumentMoniker": "SYS.cs",
+              "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\SYS.cs",
+              "RelativeToolTip": "SYS.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAA6AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-19T10:10:24.342Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 22,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Models\\User.cs",
+              "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\Models\\User.cs",
+              "RelativeToolTip": "Models\\User.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T17:44:49.083Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "BMI.cs",
+              "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\Models\\BMI.cs",
+              "RelativeDocumentMoniker": "Models\\BMI.cs",
+              "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\Models\\BMI.cs",
+              "RelativeToolTip": "Models\\BMI.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-18T16:42:55.812Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
               "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\appsettings.json",
               "RelativeToolTip": "appsettings.json",
-              "ViewState": "AQIAABIAAAAAAAAAAAAAACUAAAADAAAA",
+              "ViewState": "AQIAAA4AAAAAAAAAAABRwCUAAAADAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2024-06-15T05:32:36.822Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 25,
               "Title": "launchSettings.json",
               "DocumentMoniker": "D:\\NutriGenius\\Backend\\Nutrigenius\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "Properties\\launchSettings.json",

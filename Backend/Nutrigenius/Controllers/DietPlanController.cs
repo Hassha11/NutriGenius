@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Nutrigenius.Models;
+using Nutrigenius.Services;
 using System;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
@@ -13,10 +14,12 @@ namespace Nutrigenius.Controllers
     public class DietPlanController : ControllerBase
     {
         private readonly string _connectionString;
+        private readonly UserContext _userContext;
 
-        public DietPlanController(IConfiguration configuration)
+        public DietPlanController(IConfiguration configuration, UserContext userContext)
         {
             _connectionString = configuration.GetConnectionString("DefaultConnection");
+            _userContext = userContext;
         }
 
         [HttpPost("DietPlan")]
@@ -29,6 +32,14 @@ namespace Nutrigenius.Controllers
 
             try
             {
+                var userId = _userContext.UserId;
+                if (userId == null)
+                {
+                    return Unauthorized(new { message = "User is not authenticated" });
+                }
+
+                _userContext.UserId = userId;
+
                 using (SqlConnection conn = new SqlConnection(_connectionString))
                 {
                     await conn.OpenAsync();
@@ -40,13 +51,14 @@ namespace Nutrigenius.Controllers
                     {
                         // Insert into DietPlan table
                         string sqlInsertRegistration = @"
-                            INSERT INTO Registration (NAME, GENDER, DOB, USERNAME, PASSWORD, CONFIRMPASS) 
+                            INSERT INTO Diet (UserID, Diebetes, Cholesterol, Thyroid, Heart, Depression, Points) 
                             OUTPUT INSERTED.USERID
-                            VALUES (@Name, @Gender, @DOB, @UserName, @Password, @ConfirmPass)";
+                            VALUES (@Userid, @Diebetes, @Cholesterol, @Thyroid, @Heart, @Depression, @Points)";
 
                         int newUserId;
                         using (SqlCommand cmd = new SqlCommand(sqlInsertRegistration, conn, transaction))
                         {
+                            cmd.Parameters.AddWithValue("@UserId", userId);
                             cmd.Parameters.AddWithValue("@Diebetes", dietplan.Diebetes);
                             cmd.Parameters.AddWithValue("@Cholesterol", dietplan.Cholesterol);
                             cmd.Parameters.AddWithValue("@Thyroid", dietplan.Thyroid);
