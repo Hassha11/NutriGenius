@@ -16,19 +16,19 @@ const DietPlan = () => {
 
     const handleDiet = async (e) => {
         e.preventDefault();
-
+    
         try {
             const response = await axios.post('http://localhost:5274/api/DietPlan/DietPlan', {
-                diebetes: diabetes,
+                diabetes: diabetes, // Corrected spelling from 'diebetes'
                 cholesterol: cholesterol,
                 thyroid: thyroid,
                 heart: heartDisease,
                 depression: depression,
             });
-
+    
             if (response.status === 200) {
                 alert("User Data Saved Successfully");
-                navigate('/'); 
+                navigate('/meal'); 
             }
            
         } catch (error) {
@@ -38,8 +38,7 @@ const DietPlan = () => {
                 console.error('There was an error!', error);
             }
         }
-    };
-
+    };    
 
     return (
         <div className='layout'>

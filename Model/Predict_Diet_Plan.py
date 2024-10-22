@@ -3,7 +3,7 @@ import joblib
 
 # Load the trained model
 try:
-    model = joblib.load(r'D:\NutriGenius\Model\diet_plan_model.pkl')
+    model = joblib.load(r'D:\\NutriGenius\\Model\diet_plan_model.pkl')
 except FileNotFoundError:
     print("Error: The model file D:\\NutriGenius\\Model\\diet_plan_model.pkl does not exist.")
     sys.exit()

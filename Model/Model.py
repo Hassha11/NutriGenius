@@ -48,7 +48,7 @@ from sklearn.model_selection import train_test_split
 import joblib
 
 # Load the dataset
-data = pd.read_excel(r'D:\NutriGenius\nutrigenius\src\Components\Assets\NutriGenius.xlsx')
+data = pd.read_excel(r'D:\\NutriGenius\\nutrigenius\\src\\Components\\Assets\\NutriGenius.xlsx')
 
 # Ensure the disease columns are treated as numerical values
 data['Diabetes'] = data['Diabetes'].map({'No': 0, 'Yes': 1})
@@ -69,4 +69,4 @@ model = DecisionTreeClassifier()
 model.fit(X_train, y_train)
 
 # Save the model to a file
-joblib.dump(model, r'D:\NutriGenius\Model\diet_plan_model.pkl')
+joblib.dump(model, r'D:\\NutriGenius\\Model\\diet_plan_model.pkl')

@@ -7,10 +7,10 @@ namespace Nutrigenius.Models
     {
         public int Age { get; set; }
         public double BMI { get; set; }
-        public string Diabetes { get; set; }
-        public string Cholesterol { get; set; }
-        public string ThyroidDiseases { get; set; }
-        public string HeartDiseases { get; set; }
-        public string Depression { get; set; }
+        public int Diabetes { get; set; }
+        public int Cholesterol { get; set; }
+        public int ThyroidDiseases { get; set; }
+        public int HeartDiseases { get; set; }
+        public int Depression { get; set; }
     }
 }
