@@ -1,66 +1,64 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Meals.css';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import Header from '../Header/Header';
 import Dashboard from '../Dashboard/Dashboard';
 import Footer from '../Footer/Footer';
 
-const Meals = () => {
+function DietPlanForm() {
+    const [age, setAge] = useState('');
+    const [bmi, setBmi] = useState('');
     const [diabetes, setDiabetes] = useState('');
     const [cholesterol, setCholesterol] = useState('');
-    const [thyroid, setThyroid] = useState('');
-    const [heartDisease, setHeartDisease] = useState('');
+    const [thyroidDiseases, setThyroidDiseases] = useState('');
+    const [heartDiseases, setHeartDiseases] = useState('');
     const [depression, setDepression] = useState('');
-    const [points, setPoints] = useState('');
-    const navigate = useNavigate();
+    const [dietPlan, setDietPlan] = useState('');
 
-    // Fetch data from the database when the component mounts
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get('http://localhost:5274/api/DietPlan/GetDietPlan');
-                if (response.data) {
-                    const { diabetes, cholesterol, thyroid, heartDisease, depression, points } = response.data;
-                    setDiabetes(diabetes);
-                    setCholesterol(cholesterol);
-                    setThyroid(thyroid);
-                    setHeartDisease(heartDisease);
-                    setDepression(depression);
-                    setPoints(points);
-                }
-            } catch (error) {
-                console.error('Error fetching data', error);
-            }
-        };
-
-        fetchData();
-    }, []);
-
+    // Handle form submission to send data to the backend
     const handleMeal = async (e) => {
         e.preventDefault();
 
         try {
-            const response = await axios.post('http://localhost:5274/api/Meals/Diet', {
+            const response = await axios.post('http://localhost:5274/api/Diet/get-diet-plan', {
+                age: age,
+                bmi: bmi,
                 diabetes,
                 cholesterol,
-                thyroid,
-                heartDisease,
+                thyroidDiseases,
+                heartDiseases,
                 depression,
-                points,
+                dietPlan
             });
 
             if (response.status === 200) {
-                navigate('/'); 
+                setDietPlan(response.data.dietPlan); // Store the returned diet plan
             }
-           
         } catch (error) {
-            if (error.response && error.response.status === 401) {
-                console.error('Registration Unsuccessful');
-            } else {
-                console.error('There was an error!', error);
-            }
+            console.error('Error generating diet plan', error);
         }
+    };
+
+    // Function to generate a downloadable file
+    const downloadDietPlan = () => {
+        const element = document.createElement("a");
+        const file = new Blob([dietPlan], { type: 'text/plain' });
+        element.href = URL.createObjectURL(file);
+        element.download = "DietPlan.txt";
+        document.body.appendChild(element); // Required for this to work in FireFox
+        element.click();
+    };
+
+    // Function to clear the form fields
+    const resetForm = () => {
+        setAge('');
+        setBmi('');
+        setDiabetes('');
+        setCholesterol('');
+        setThyroidDiseases('');
+        setHeartDiseases('');
+        setDepression('');
+        setDietPlan('');
     };
 
     return (
@@ -70,65 +68,118 @@ const Meals = () => {
             <div className='wrapper-meals'>
                 <form onSubmit={handleMeal}>
                     <div className="form-group">
+                        <label htmlFor="age">Age</label>
+                        <textarea
+                            id="age"
+                            value={age}
+                            onChange={(e) => setAge(e.target.value)}
+                            rows={1}
+                            style={{ width: '100%' }}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="bmi">BMI</label>
+                        <textarea
+                            id="bmi"
+                            value={bmi}
+                            onChange={(e) => setBmi(e.target.value)}
+                            rows={1}
+                            style={{ width: '100%' }}
+                        />
+                    </div>
+                    <div className="form-group">
                         <label htmlFor="diabetes">Diabetes</label>
-                        <input
-                            type="text"
+                        <select
                             id="diabetes"
                             value={diabetes}
-                            onChange={(e) => setDiabetes(e.target.value)}
-                        />
+                            onChange={(e) => setDiabetes(parseInt(e.target.value))}
+                        >
+                            <option value={0}>None</option>
+                            <option value={1}>Level 1 (70-99 mg/dL)</option>
+                            <option value={2}>Level 2 (100-125 mg/dL)</option>
+                            <option value={3}>Level 3 (126 mg/dL or Higher)</option>
+                        </select>
                     </div>
                     <div className="form-group">
                         <label htmlFor="cholesterol">Cholesterol</label>
-                        <input
-                            type="text"
+                        <select
                             id="cholesterol"
                             value={cholesterol}
-                            onChange={(e) => setCholesterol(e.target.value)}
-                        />
+                            onChange={(e) => setCholesterol(parseInt(e.target.value))}
+                        >
+                            <option value={0}>None</option>
+                            <option value={1}>Level 1 (Less than 200 mg/dL)</option>
+                            <option value={2}>Level 2 (200-239 mg/dL)</option>
+                            <option value={3}>Level 3 (240mg/dL and Above)</option>
+                        </select>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="thyroid">Thyroid</label>
-                        <input
-                            type="text"
-                            id="thyroid"
-                            value={thyroid}
-                            onChange={(e) => setThyroid(e.target.value)}
-                        />
+                        <label htmlFor="thyroidDiseases">Thyroid Diseases</label>
+                        <select
+                            id="thyroidDiseases"
+                            value={thyroidDiseases}
+                            onChange={(e) => setThyroidDiseases(parseInt(e.target.value))}
+                        >
+                            <option value={0}>None</option>
+                            <option value={1}>Level 1 (Thyroid-Stimulating Hormone (TSH))</option>
+                            <option value={2}>Level 2 (Free Thyroxine (Free T4))</option>
+                            <option value={3}>Level 3 (Free Triiodothyronine (Free T3))</option>
+                        </select>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="heartDisease">Heart Disease</label>
-                        <input
-                            type="text"
-                            id="heartDisease"
-                            value={heartDisease}
-                            onChange={(e) => setHeartDisease(e.target.value)}
-                        />
+                        <label htmlFor="heartDiseases">Heart Diseases</label>
+                        <select
+                            id="heartDiseases"
+                            value={heartDiseases}
+                            onChange={(e) => setHeartDiseases(parseInt(e.target.value))}
+                        >
+                            <option value={0}>None</option>
+                            <option value={1}>Level 1 (Heart Rate 60bpm-100bpm)</option>
+                            <option value={2}>Level 2 (Blood Pressure 120/80 mmHg)</option>
+                            <option value={3}>Level 3 (Ejection Fraction 55%-70%)</option>
+                        </select>
                     </div>
                     <div className="form-group">
                         <label htmlFor="depression">Depression</label>
-                        <input
-                            type="text"
+                        <select
                             id="depression"
                             value={depression}
-                            onChange={(e) => setDepression(e.target.value)}
-                        />
+                            onChange={(e) => setDepression(parseInt(e.target.value))}
+                        >
+                            <option value={0}>None</option>
+                            <option value={1}>Level 1 (Mild Depression)</option>
+                            <option value={2}>Level 2 (Moderate Depression)</option>
+                            <option value={3}>Level 3 (Severe Depression)</option>
+                        </select>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="points">Points</label>
-                        <input
-                            type="text"
-                            id="points"
-                            value={points}
-                            onChange={(e) => setPoints(e.target.value)}
+                        <label htmlFor="dietPlan">Diet Plan</label>
+                        <textarea
+                            id="dietPlan"
+                            value={dietPlan}
+                            readOnly
+                            rows={5}
+                            style={{ width: '100%' }}
                         />
                     </div>
-                    <button type="submit">Submit</button>
+                    
+                    {/* Buttons for Download and Close */}
+                    <div className="button-container">
+                        <button type="button" onClick={downloadDietPlan}>Download Diet Plan</button>
+                        <button type="button" onClick={resetForm}>Close</button>
+                    </div>
                 </form>
+                
+                {dietPlan && (
+                    <div className="diet-plan">
+                        <h3>Your Diet Plan</h3>
+                        <p>{dietPlan}</p>
+                    </div>
+                )}
             </div>
             <Footer />
         </div>
-    );
-};
+    );    
+}
 
-export default Meals;
+export default DietPlanForm;

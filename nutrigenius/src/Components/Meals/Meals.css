@@ -7,10 +7,10 @@
 }
 
 .wrapper-meals {
-    max-width: 180px; /* Adjusted width */
-    /*max-height: 280px; /* Adjusted height */
-    margin: 20 auto;
-    padding: 10px 30px; /* Adjusted padding */
+    max-width: 420px; /* Adjusted width */
+    max-height: 560px; /* Adjusted height */
+    margin: 100px auto; /* Increased the top margin to move the form down */
+    padding: 30px 40px; /* Adjusted padding */
     border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -24,12 +24,27 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    width: 300px;
+    width: 600px;
 }
 
 .form-group {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    width: 20px; /* Adjust this width as needed */
+    margin-right: 80px;
+    text-align: right;
+}
+
+.form-group textarea,
+.form-group select {
+    flex: 1;
+    padding: 4px;
+    font-size: 1rem;
+    width: 100%;
 }
 
 label {
@@ -56,3 +71,24 @@ button {
 button:hover {
     background-color: #a2a5a5;
 }
+
+.button-container {
+    display: flex;
+    justify-content: flex-start; /* Align buttons to the left */
+    gap: 10px; /* Space between the buttons */
+    margin-top: 10px; /* Optional margin */
+}
+
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #090a0a;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #a2a5a5;
+}
+

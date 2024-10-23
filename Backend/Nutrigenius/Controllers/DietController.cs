@@ -12,10 +12,21 @@ namespace Nutrigenius.Controllers
         [HttpPost("get-diet-plan")]
         public IActionResult GetDietPlan([FromBody] UserData userData)
         {
-            // Call Python script with user details
-            var dietPlan = CallPythonScript(userData);
+            if (userData == null)
+            {
+                return BadRequest("Invalid user data.");
+            }
 
-            return Ok(new { dietPlan });
+            // Call Python script with user details
+            try
+            {
+                var dietPlan = CallPythonScript(userData);
+                return Ok(new { dietPlan });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
 
         private string CallPythonScript(UserData userData)
