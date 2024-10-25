@@ -5,6 +5,8 @@ using Nutrigenius.Models;
 using Nutrigenius.Services;
 using System;
 using System.Data.SqlClient;
+using System.Linq; // Add this for claims
+using System.Security.Claims; // Add this for claims
 using System.Threading.Tasks;
 
 namespace Nutrigenius.Controllers
@@ -32,13 +34,14 @@ namespace Nutrigenius.Controllers
 
             try
             {
-                var userId = _userContext.UserId;
-                if (userId == null)
+                // Retrieve user ID from claims
+                var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+                if (userIdClaim == null)
                 {
                     return Unauthorized(new { message = "User is not authenticated" });
                 }
 
-                _userContext.UserId = userId;
+                var userId = int.Parse(userIdClaim.Value); // Convert to int if necessary
 
                 using (SqlConnection conn = new SqlConnection(_connectionString))
                 {
@@ -53,7 +56,7 @@ namespace Nutrigenius.Controllers
                         string sqlInsertRegistration = @"
                             INSERT INTO Diet (UserID, Diebetes, Cholesterol, Thyroid, Heart, Depression, Points) 
                             OUTPUT INSERTED.USERID
-                            VALUES (@Userid, @Diebetes, @Cholesterol, @Thyroid, @Heart, @Depression, @Points)";
+                            VALUES (@UserId, @Diebetes, @Cholesterol, @Thyroid, @Heart, @Depression, @Points)";
 
                         int newUserId;
                         using (SqlCommand cmd = new SqlCommand(sqlInsertRegistration, conn, transaction))

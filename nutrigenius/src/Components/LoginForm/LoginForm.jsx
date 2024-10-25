@@ -59,6 +59,7 @@ const LoginForm = () => {
                 alert("Login Success");
                 navigate('/bmi'); 
 
+                
             } else if (response.data.userType === 'Dietitian') {
                 alert("Login Success");
                 navigate('/'); 

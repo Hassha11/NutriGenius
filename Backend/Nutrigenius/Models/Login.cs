@@ -5,7 +5,7 @@ namespace Nutrigenius.Models
     public class Login
     {
         
-        public int UserID { get; set; }
+        public static int UserID { get; set; }
 
         public string UserName { get; set; }
 

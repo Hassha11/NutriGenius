@@ -1,9 +1,13 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using Nutrigenius.Models;
 using System;
 using System.Data.SqlClient;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Nutrigenius.Controllers
@@ -13,62 +17,20 @@ namespace Nutrigenius.Controllers
     public class LoginController : ControllerBase
     {
         private readonly string _connectionString;
-        private readonly UserContext _userContext;
+        private readonly IConfiguration _configuration;
 
-        public LoginController(IConfiguration configuration, UserContext userContext)
+        public LoginController(IConfiguration configuration)
         {
+            _configuration = configuration;
             _connectionString = configuration.GetConnectionString("DefaultConnection");
-            _userContext = userContext;
         }
-
-        //[HttpPost("Login")]  //16-09-2024
-        //public async Task<IActionResult> Login([FromBody] Login login)
-        //{
-        //    if (login == null || string.IsNullOrEmpty(login.UserName) || string.IsNullOrEmpty(login.Password))
-        //    {
-        //        return Unauthorized(new { message = "0" });
-        //    }
-
-        //    try
-        //    {
-        //        using (SqlConnection conn = new SqlConnection(_connectionString))
-        //        {
-        //            await conn.OpenAsync();
-
-        //            string query = "SELECT USERID FROM LOGIN WHERE USERNAME = @Username AND PASSWORD = @Password ";
-
-        //            string sql = "SELECT COUNT(1) FROM Login WHERE USERNAME = @UserName AND PASSWORD = @Password";
-
-        //            using (SqlCommand cmd = new SqlCommand(sql, conn))
-        //            {
-        //                cmd.Parameters.AddWithValue("@UserName", login.UserName);
-        //                cmd.Parameters.AddWithValue("@Password", login.Password);
-
-        //                var result = await cmd.ExecuteScalarAsync();
-
-        //                if (result != null && int.TryParse(result.ToString(), out int userCount) && userCount > 0)
-        //                {
-        //                    return Ok(1);
-        //                }
-        //                else
-        //                {
-        //                    return Unauthorized(new { message = "Invalid username or password." });
-        //                }
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return StatusCode(StatusCodes.Status500InternalServerError, "Error: " + ex.Message);
-        //    }
-        //}
 
         [HttpPost("Login")]
         public async Task<IActionResult> Login([FromBody] Login login)
         {
             if (login == null || string.IsNullOrEmpty(login.UserName) || string.IsNullOrEmpty(login.Password))
             {
-                return Unauthorized(new { message = "0" });
+                return BadRequest(new { message = "Invalid login request" });
             }
 
             try
@@ -77,31 +39,35 @@ namespace Nutrigenius.Controllers
                 {
                     await conn.OpenAsync();
 
-                    // First, check the Login table
-                    string userQuery = "SELECT COUNT(1) FROM Login WHERE USERNAME = @UserName AND PASSWORD = @Password";
+                    // Check User Login
+                    string userQuery = "SELECT USERID FROM Login WHERE USERNAME = @UserName AND PASSWORD = @Password"; // Use hashed password
                     using (SqlCommand userCmd = new SqlCommand(userQuery, conn))
                     {
                         userCmd.Parameters.AddWithValue("@UserName", login.UserName);
-                        userCmd.Parameters.AddWithValue("@Password", login.Password);
+                        userCmd.Parameters.AddWithValue("@Password", login.Password); // Hash the password before checking
 
-                        var userResult = await userCmd.ExecuteScalarAsync();
-                        if (userResult != null && int.TryParse(userResult.ToString(), out int userCount) && userCount > 0)
+                        var userId = await userCmd.ExecuteScalarAsync();
+                        if (userId != null)
                         {
-                            return Ok(new { userType = "User" });
+                            // Create token for the user
+                            var token = GenerateJwtToken(userId.ToString(), "User");
+                            return Ok(new { token, userType = "User" });
                         }
                     }
 
-                    // If not found in Login table, check the Dietitian Login table
-                    string dietitianQuery = "SELECT COUNT(1) FROM DietLogin WHERE USERNAME = @UserName AND PASSWORD = @Password";
+                    // Check Dietitian Login
+                    string dietitianQuery = "SELECT USERID FROM DietLogin WHERE USERNAME = @UserName AND PASSWORD = @Password"; // Use hashed password
                     using (SqlCommand dietitianCmd = new SqlCommand(dietitianQuery, conn))
                     {
                         dietitianCmd.Parameters.AddWithValue("@UserName", login.UserName);
-                        dietitianCmd.Parameters.AddWithValue("@Password", login.Password);
+                        dietitianCmd.Parameters.AddWithValue("@Password", login.Password); // Hash the password before checking
 
-                        var dietitianResult = await dietitianCmd.ExecuteScalarAsync();
-                        if (dietitianResult != null && int.TryParse(dietitianResult.ToString(), out int dietitianCount) && dietitianCount > 0)
+                        var dietitianId = await dietitianCmd.ExecuteScalarAsync();
+                        if (dietitianId != null)
                         {
-                            return Ok(new { userType = "Dietitian" });
+                            // Create token for the dietitian
+                            var token = GenerateJwtToken(dietitianId.ToString(), "Dietitian");
+                            return Ok(new { token, userType = "Dietitian" });
                         }
                     }
 
@@ -112,6 +78,28 @@ namespace Nutrigenius.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error: " + ex.Message);
             }
+        }
+
+        private string GenerateJwtToken(string userId, string userType)
+        {
+            // Define token expiration time
+            var claims = new[]
+            {
+                new Claim(ClaimTypes.NameIdentifier, userId),
+                new Claim(ClaimTypes.Role, userType)
+            };
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var token = new JwtSecurityToken(
+                issuer: _configuration["Jwt:Issuer"],
+                audience: _configuration["Jwt:Audience"],
+                claims: claims,
+                expires: DateTime.Now.AddMinutes(30),
+                signingCredentials: creds);
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }
 }

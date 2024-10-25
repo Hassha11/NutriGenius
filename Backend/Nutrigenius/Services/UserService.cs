@@ -4,26 +4,26 @@
 
     public class UserService
     {
-        private readonly UserContext _userContext;
         private readonly DatabaseService _databaseService;
 
-        public UserService(UserContext userContext, DatabaseService databaseService)
+        public UserService(DatabaseService databaseService)
         {
-            _userContext = userContext;
             _databaseService = databaseService;
         }
 
-        public void LoadUserId(int userId)
+        public User LoadUser(int userId)
         {
             var user = _databaseService.GetUserById(userId);
             if (user != null)
             {
-                _userContext.UserId = user.Id;
+                // Return the loaded user or set it to a property
+                return user;
             }
             else
             {
                 // Handle case where user is not found
                 Console.WriteLine("User not found");
+                return null; // or throw an exception as needed
             }
         }
     }
