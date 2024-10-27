@@ -79,7 +79,7 @@ const BMIForm = () => {
                     </div>
                     <h4 style={{ marginTop: '-30px', color: 'GrayText' }}>Do you want a Diet Plan?</h4>
                     <div style={{ marginTop: '-10px' }} className="flex-container-dietplan">
-                        <button  style={{ marginTop: '20px' }} type="button" onClick={() => navigate('/diet')}>Yes</button>
+                        <button  style={{ marginTop: '20px' }} type="button" onClick={() => navigate('/diet?age=${age}&bmi=${bmi}')}>Yes</button>
                         <button style={{ marginTop: '20px' }} type="button">No</button>
                     </div>
                 </form>
