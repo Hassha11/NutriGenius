@@ -1,8 +1,8 @@
 .wrapper {
     max-width: 500px; /* Adjusted width */
-    max-height: 800px; /* Adjusted height */
+    max-height: 1200px; /* Adjusted height */
     margin: 0 auto;
-    padding: 10px 30px; /* Adjusted padding */
+    padding: 10px 20px; /* Adjusted padding */
     border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -12,9 +12,17 @@
     color: #fff;
 }
 
+h1 {
+    text-align: center;
+    margin-top: 6px;
+    font-family: Arial, sans-serif;
+    font-size: 20px; /* Adjusted font size */
+    color: #fff;
+}
+
 h2 {
     text-align: center;
-    margin-top: 10px;
+    margin-top: 8px;
     font-family: Arial, sans-serif;
     font-size: 20px; /* Adjusted font size */
     color: #fff;
@@ -22,8 +30,75 @@ h2 {
 
 h4 {
     text-align: left;
-    margin-top: 10px;
+    margin-top: 8px;
     font-family: Arial, sans-serif;
     font-size: 16px; /* Adjusted font size */
     color: #fff;
+}
+
+.input-box {
+    margin-bottom: 10px; /* Space between input boxes */
+}
+
+.input-box {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Align items vertically centered */
+    margin-bottom: 5px; /* Reduce space below each input box */
+}
+
+.input-box label {
+    margin-right: 5px; /* Space between label and input (adjust as needed) */
+    color: #756f6f; /* Label color */
+    flex: 1; /* Allow label to take only necessary space */
+    margin-top: -40px;
+}
+
+.input-box input,
+.input-box select {
+    width: 80%; /* Set width to 100% of the container */
+    max-width: 400px; /* Set a max width for consistency */
+    height: 1px; /* Set a specific height for the input fields */
+    padding: 5px; /* Padding inside the fields */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+    color: #817a7a; /* Input and select text color */
+    outline: none; /* Remove outline on focus */
+    box-sizing: border-box; /* Include padding and border in width */
+}
+
+h1, h4 {
+    margin-top: 0px;
+    color: #fff; /* Ensure headings are also styled correctly */
+}
+
+/* Optional: Reduce margin between headings if necessary */
+h4 {
+    margin-top: 0px; /* Adjust as needed for spacing */
+}
+
+button {
+    width: 100%; /* Full width for the button */
+    padding: 10px; /* Padding inside the button */
+    background-color: #a5b6c9; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Change cursor on hover */
+    margin-top: 5px; /* Space above the button */
+}
+
+
+/* Optional: Add a hover effect */
+.input-box input:hover {
+    background-color: rgba(255, 255, 255, 0.3); /* Change background on hover */
+}
+
+/* Optional: Add a focus effect */
+.input-box input:focus {
+    background-color: rgba(255, 255, 255, 0.4); /* Change background on focus */
+}
+
+.reduced-gap {
+    margin-top: -10px; /* Adjust as needed to reduce the gap */
 }

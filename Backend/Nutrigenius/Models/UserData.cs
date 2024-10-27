@@ -5,6 +5,7 @@ namespace Nutrigenius.Models
 {
     public class UserData
     {
+        //public int UserID { get; set; }
         public int Age { get; set; }
         public double BMI { get; set; }
         public int Diabetes { get; set; }
@@ -12,5 +13,7 @@ namespace Nutrigenius.Models
         public int ThyroidDiseases { get; set; }
         public int HeartDiseases { get; set; }
         public int Depression { get; set; }
+        public string DietPlan { get; set; }
+
     }
 }
