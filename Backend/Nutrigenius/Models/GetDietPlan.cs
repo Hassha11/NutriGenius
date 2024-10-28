@@ -3,7 +3,7 @@
 namespace Nutrigenius.Models
 
 {
-    public class UserData
+    public class GetDietPlan
     {
         //public int UserID { get; set; }
         public int Age { get; set; }

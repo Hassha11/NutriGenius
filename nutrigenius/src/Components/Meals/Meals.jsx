@@ -165,8 +165,8 @@ function DietPlanForm() {
                     
                     {/* Buttons for Download and Close */}
                     <div className="button-container">
-                        <button type="button" onClick={downloadDietPlan}>Download Diet Plan</button>
-                        <button type="button" onClick={resetForm}>Close</button>
+                        <button type="button" onClick={downloadDietPlan} style={{ width: '380px', padding: '10px', marginTop: '4px', float: 'left', marginLeft: '30px'}}>Download Diet Plan</button>
+                        {/*<button type="button" onClick={resetForm}>Close</button>*/}
                     </div>
                 </form>
                 

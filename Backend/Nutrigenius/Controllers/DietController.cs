@@ -21,10 +21,10 @@ namespace Nutrigenius.Controllers
             _connectionString = configuration.GetConnectionString("DefaultConnection");
         }
 
-        [HttpPost("get-diet-plan")]
-        public async Task<IActionResult> GetDietPlan([FromBody] UserData userData)
+        [HttpPost("GetDietPlan")]
+        public async Task<IActionResult> GetDietPlan([FromBody] GetDietPlan getdietplan)
         {
-            if (userData == null)
+            if (getdietplan == null)
             {
                 return BadRequest("Invalid user data.");
             }
@@ -32,7 +32,7 @@ namespace Nutrigenius.Controllers
             try
             {
                 // Call Python script with user details to generate diet plan
-                var dietPlan = CallPythonScript(userData);
+                var dietPlan = CallPythonScript(getdietplan);
 
                 using (SqlConnection conn = new SqlConnection(_connectionString))
                 {
@@ -46,13 +46,13 @@ namespace Nutrigenius.Controllers
 
                     using (SqlCommand insertCmd = new SqlCommand(insertSql, conn))
                     {
-                        insertCmd.Parameters.AddWithValue("@Age", userData.Age);
-                        insertCmd.Parameters.AddWithValue("@BMI", userData.BMI);
-                        insertCmd.Parameters.AddWithValue("@Diabetes", userData.Diabetes);
-                        insertCmd.Parameters.AddWithValue("@Cholesterol", userData.Cholesterol);
-                        insertCmd.Parameters.AddWithValue("@ThyroidDiseases", userData.ThyroidDiseases);
-                        insertCmd.Parameters.AddWithValue("@HeartDiseases", userData.HeartDiseases);
-                        insertCmd.Parameters.AddWithValue("@Depression", userData.Depression);
+                        insertCmd.Parameters.AddWithValue("@Age", getdietplan.Age);
+                        insertCmd.Parameters.AddWithValue("@BMI", getdietplan.BMI);
+                        insertCmd.Parameters.AddWithValue("@Diabetes", getdietplan.Diabetes);
+                        insertCmd.Parameters.AddWithValue("@Cholesterol", getdietplan.Cholesterol);
+                        insertCmd.Parameters.AddWithValue("@ThyroidDiseases", getdietplan.ThyroidDiseases);
+                        insertCmd.Parameters.AddWithValue("@HeartDiseases", getdietplan.HeartDiseases);
+                        insertCmd.Parameters.AddWithValue("@Depression", getdietplan.Depression);
                         insertCmd.Parameters.AddWithValue("@DietPlan", dietPlan);
 
                         int rowsInserted = await insertCmd.ExecuteNonQueryAsync();
@@ -74,13 +74,13 @@ namespace Nutrigenius.Controllers
             }
         }
 
-        private string CallPythonScript(UserData userData)
+        private string CallPythonScript(GetDietPlan getdietplan)
 
         {
             ProcessStartInfo start = new ProcessStartInfo
             {
                 FileName = @"C:\Users\HP\AppData\Local\Programs\Python\Python313\python.exe",  // Path to python.exe
-                Arguments = $@"D:\NutriGenius\Model\Predict_Diet_Plan.py {userData.Age} {userData.BMI} {userData.Diabetes} {userData.Cholesterol} {userData.ThyroidDiseases} {userData.HeartDiseases} {userData.Depression} {userData.DietPlan}",
+                Arguments = $@"D:\NutriGenius\Model\Predict_Diet_Plan.py {getdietplan.Age} {getdietplan.BMI} {getdietplan.Diabetes} {getdietplan.Cholesterol} {getdietplan.ThyroidDiseases} {getdietplan.HeartDiseases} {getdietplan.Depression} {getdietplan.DietPlan}",
                 UseShellExecute = false,
                 RedirectStandardOutput = true,
                 RedirectStandardError = true,
@@ -102,15 +102,15 @@ namespace Nutrigenius.Controllers
             }
         }
 
-        [HttpGet("get-user-diet-plan")]
+        [HttpGet("GetUserDietPlan")]
         public async Task<IActionResult> GetUserDietPlan(int userId)
         {
             try
             {
                 // Retrieve user's health data based on userId
-                UserData userData = await GetUserDataById(userId);
+                GetDietPlan getdietplan = await GetUserDataById(userId);
 
-                if (userData == null)
+                if (getdietplan == null)
                 {
                     return NotFound(new { message = "User data not found." });
                 }
@@ -128,14 +128,14 @@ namespace Nutrigenius.Controllers
 
                     using (SqlCommand selectCmd = new SqlCommand(selectSql, conn))
                     {
-                        selectCmd.Parameters.AddWithValue("@Age", userData.Age);
-                        selectCmd.Parameters.AddWithValue("@BMI", userData.BMI);
-                        selectCmd.Parameters.AddWithValue("@Diabetes", userData.Diabetes);
-                        selectCmd.Parameters.AddWithValue("@Cholesterol", userData.Cholesterol);
-                        selectCmd.Parameters.AddWithValue("@ThyroidDiseases", userData.ThyroidDiseases);
-                        selectCmd.Parameters.AddWithValue("@HeartDiseases", userData.HeartDiseases);
-                        selectCmd.Parameters.AddWithValue("@Depression", userData.Depression);
-                        selectCmd.Parameters.AddWithValue("@DietPlan", userData.DietPlan);
+                        selectCmd.Parameters.AddWithValue("@Age", getdietplan.Age);
+                        selectCmd.Parameters.AddWithValue("@BMI", getdietplan.BMI);
+                        selectCmd.Parameters.AddWithValue("@Diabetes", getdietplan.Diabetes);
+                        selectCmd.Parameters.AddWithValue("@Cholesterol", getdietplan.Cholesterol);
+                        selectCmd.Parameters.AddWithValue("@ThyroidDiseases", getdietplan.ThyroidDiseases);
+                        selectCmd.Parameters.AddWithValue("@HeartDiseases", getdietplan.HeartDiseases);
+                        selectCmd.Parameters.AddWithValue("@Depression", getdietplan.Depression);
+                        selectCmd.Parameters.AddWithValue("@DietPlan", getdietplan.DietPlan);
 
                         using (SqlDataReader reader = await selectCmd.ExecuteReaderAsync())
                         {
@@ -171,7 +171,7 @@ namespace Nutrigenius.Controllers
         }
 
         // Helper method to get user data based on userId
-        private async Task<UserData> GetUserDataById(int userId)
+        private async Task<GetDietPlan> GetUserDataById(int userId)
         {
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
@@ -185,7 +185,7 @@ namespace Nutrigenius.Controllers
                     {
                         if (reader.Read())
                         {
-                            return new UserData
+                            return new GetDietPlan
                             {
                                 Age = reader.GetInt32(0), 
                                 BMI = (double)reader.GetDecimal(1), 

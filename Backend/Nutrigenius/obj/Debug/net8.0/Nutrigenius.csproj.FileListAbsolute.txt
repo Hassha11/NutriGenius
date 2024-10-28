@@ -146,3 +146,7 @@ D:\NutriGenius\Backend\Nutrigenius\obj\Debug\net8.0\refint\Nutrigenius.dll
 D:\NutriGenius\Backend\Nutrigenius\obj\Debug\net8.0\Nutrigenius.pdb
 D:\NutriGenius\Backend\Nutrigenius\obj\Debug\net8.0\Nutrigenius.genruntimeconfig.cache
 D:\NutriGenius\Backend\Nutrigenius\obj\Debug\net8.0\ref\Nutrigenius.dll
+D:\NutriGenius\Backend\Nutrigenius\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
+D:\NutriGenius\Backend\Nutrigenius\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\NutriGenius\Backend\Nutrigenius\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+D:\NutriGenius\Backend\Nutrigenius\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
