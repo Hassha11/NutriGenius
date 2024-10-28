@@ -13,6 +13,7 @@ import Home from './Components/Home/Home';
 import Meals from './Components/Meals/Meals';
 import Template from './Components/Template/Template';
 import DietitianReg from './Components/DietitianReg/DietitianReg';
+import Analysis from './Components/Analysis/Analysis';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path="/meals" element={<Meals />} />
         <Route path="/template" element={<Template />} />
         <Route path="/DiatetianReg" element={<DietitianReg />} />
+        <Route path="/analysis" element={<Analysis/>} />
       </Routes>
     </div>
     </Router>

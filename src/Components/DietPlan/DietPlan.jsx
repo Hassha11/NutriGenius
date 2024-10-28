@@ -5,7 +5,7 @@ import { useNavigate, useLocation  } from 'react-router-dom';
 import Header from '../Header/Header';
 import Dashboard from '../Dashboard/Dashboard';
 import Footer from '../Footer/Footer';
-import { FaAlignRight } from 'react-icons/fa';
+//import { FaAlignRight } from 'react-icons/fa';
 
 const DietPlan = () => {
     const location = useLocation();
@@ -31,7 +31,7 @@ const DietPlan = () => {
         e.preventDefault();
     
         try {
-            const response = await axios.post('http://localhost:5274/api/Diet/get-diet-plan', {
+            const response = await axios.post('http://localhost:5274/api/Diet/GetDietPlan', {
                 Age: age,
                 BMI: bmi,
                 Diabetes: diabetes, 
@@ -43,7 +43,7 @@ const DietPlan = () => {
     
             if (response.status === 200) {
                 alert("User Data Saved Successfully");
-           //navigate('/meals'); 
+                navigate('/meals'); 
             }
            
         } catch (error) {
