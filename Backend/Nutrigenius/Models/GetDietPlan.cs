@@ -14,6 +14,7 @@ namespace Nutrigenius.Models
         public int HeartDiseases { get; set; }
         public int Depression { get; set; }
         public string DietPlan { get; set; }
+        public int DietID { get; set; }
 
     }
 }

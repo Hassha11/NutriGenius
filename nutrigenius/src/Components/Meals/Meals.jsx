@@ -14,35 +14,55 @@ function DietPlanForm() {
     const [heartDiseases, setHeartDiseases] = useState(0);
     const [depression, setDepression] = useState(0);
     const [dietPlan, setDietPlan] = useState('');
-    const [loading, setLoading] = useState(true); // Indicates loading state
+    const [loading, setLoading] = useState(true);
+    const [dietID, setDietID] = useState(0); // Initialize to 0
+    const [error, setError] = useState('');
 
     // Function to handle meal (fetching diet plan)
     const handleMeal = async () => {
-        try {
+        setLoading(true); // Start loading state
+        setError(''); // Clear previous errors
+
+        try {   
             const response = await axios.get('http://localhost:5274/api/GetDietPlan/GetDietPlan', {
-                age,
-                bmi,
-                diabetes,
-                cholesterol,
-                thyroidDiseases,
-                heartDiseases,
-                depression
+                params: {
+                    age,
+                    bmi,
+                    diabetes,
+                    cholesterol,
+                    thyroidDiseases,
+                    heartDiseases,
+                    depression,
+                    dietID: 0 // Send initial dietID as needed for testing
+                }
             });
 
-            if (response.status === 200) {
-                setDietPlan(response.data.dietPlan); // Store the returned diet plan
+            if (response.status === 200 && response.data.userHealthData) {
+                console.log("API Response Data:", response.data);
+                setAge(response.data.userHealthData.age);
+                setBmi(response.data.userHealthData.bmi);
+                setDiabetes(response.data.userHealthData.diabetes);
+                setCholesterol(response.data.userHealthData.cholesterol);
+                setThyroidDiseases(response.data.userHealthData.thyroidDiseases);
+                setHeartDiseases(response.data.userHealthData.heartDiseases);
+                setDepression(response.data.userHealthData.depression);
+                setDietPlan(response.data.userHealthData.dietPlan); // Access with lowercase 'd'
+                setDietID(response.data.userHealthData.dietID); // Update dietID if needed
+            } else {
+                console.error('No data received for diet plan');
+                setError('No data received for diet plan');
             }
         } catch (error) {
             console.error('Error generating diet plan', error);
+            setError('Error generating diet plan');
         } finally {
-            setLoading(false); // Set loading to false after the request completes
+            setLoading(false); 
         }
     };
 
-    // Call handleMeal on component mount
     useEffect(() => {
         handleMeal();
-    }, []); // This runs once when the component mounts
+    }, [age, bmi, diabetes, cholesterol, thyroidDiseases, heartDiseases, depression]);
 
     // Function to generate a downloadable file
     const downloadDietPlan = () => {
@@ -50,13 +70,13 @@ function DietPlanForm() {
         const file = new Blob([dietPlan], { type: 'text/plain' });
         element.href = URL.createObjectURL(file);
         element.download = "DietPlan.txt";
-        document.body.appendChild(element); // Required for this to work in Firefox
+        document.body.appendChild(element);
         element.click();
     };
 
     // Render loading state while data is being fetched
     if (loading) {
-        return <p>Loading...</p>; // Display loading message before the HTML view loads
+        return <p>Loading...</p>;
     }
 
     return (
@@ -160,11 +180,11 @@ function DietPlanForm() {
                             style={{ width: '100%' }}
                         />
                     </div>
-
-                    {/* Button for Download */}
-                    <button type="button" onClick={downloadDietPlan} style={{ width: '100%', padding: '10px', marginTop: '4px'}}>Download Diet Plan</button>
+                    <button type="button" onClick={downloadDietPlan} style={{ width: '100%', padding: '10px', marginTop: '10px'}}>Download Diet Plan</button>
                 </form>
-                
+
+                {error && <p style={{ color: 'red' }}>{error}</p>}
+
                 {dietPlan && (
                     <div className="diet-plan">
                         <h3>Your Diet Plan</h3>

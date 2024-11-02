@@ -21,6 +21,35 @@ namespace Nutrigenius.Controllers
             _connectionString = configuration.GetConnectionString("DefaultConnection");
         }
 
+        private int GetNextDietID()
+        {
+            int nextDietID = 1;
+            string query = "SELECT MAX(DietID) FROM UserHealthData";
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+
+                try
+                {
+                    connection.Open();
+                    object result = command.ExecuteScalar();
+
+                    if (result != DBNull.Value)
+                    {
+                        int maxDietID = Convert.ToInt32(result);
+                        nextDietID = maxDietID + 1;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error retrieving next DietID: " + ex.Message);
+                }
+            }
+
+            return nextDietID;
+        }
+
         [HttpPost("GetDietPlan")]
         public async Task<IActionResult> GetDietPlan([FromBody] GetDietPlan getdietplan)
         {
@@ -31,20 +60,17 @@ namespace Nutrigenius.Controllers
 
             try
             {
-                // Call Python script with user details to generate diet plan
+                // Call Python script to generate diet plan
                 var dietPlan = CallPythonScript(getdietplan);
 
                 using (SqlConnection conn = new SqlConnection(_connectionString))
                 {
                     await conn.OpenAsync();
 
-                    //select max(dietId) + 1 from health table = variable
+                    int maxDietID = GetNextDietID();
 
-                    // Insert new record into the database, excluding UserID since it is an identity column
-                    string insertSql = @"INSERT INTO UserHealthData (Age, BMI, Diabetes, Cholesterol, ThyroidDiseases, HeartDiseases, Depression, DietPlan)
-                                         VALUES (@Age, @BMI, @Diabetes, @Cholesterol, @ThyroidDiseases, @HeartDiseases, @Depression, @DietPlan)";// added new field
-
-                    //string DietPlan = dietPlan;
+                    string insertSql = @"INSERT INTO UserHealthData (Age, BMI, Diabetes, Cholesterol, ThyroidDiseases, HeartDiseases, Depression, DietPlan, DietID)
+                                         VALUES (@Age, @BMI, @Diabetes, @Cholesterol, @ThyroidDiseases, @HeartDiseases, @Depression, @DietPlan, @DietID)";
 
                     using (SqlCommand insertCmd = new SqlCommand(insertSql, conn))
                     {
@@ -56,6 +82,7 @@ namespace Nutrigenius.Controllers
                         insertCmd.Parameters.AddWithValue("@HeartDiseases", getdietplan.HeartDiseases);
                         insertCmd.Parameters.AddWithValue("@Depression", getdietplan.Depression);
                         insertCmd.Parameters.AddWithValue("@DietPlan", dietPlan);
+                        insertCmd.Parameters.AddWithValue("@DietID", maxDietID);
 
                         int rowsInserted = await insertCmd.ExecuteNonQueryAsync();
 
@@ -76,13 +103,12 @@ namespace Nutrigenius.Controllers
             }
         }
 
-        private string CallPythonScript(GetDietPlan getdietplan) //Commented 29-10-2024
-
+        private string CallPythonScript(GetDietPlan getdietplan)
         {
             ProcessStartInfo start = new ProcessStartInfo
             {
-                FileName = @"C:\Users\HP\AppData\Local\Programs\Python\Python313\python.exe",  // Path to python.exe
-                Arguments = $@"D:\NutriGenius\Model\Predict_Diet_Plan.py {getdietplan.Age} {getdietplan.BMI} {getdietplan.Diabetes} {getdietplan.Cholesterol} {getdietplan.ThyroidDiseases} {getdietplan.HeartDiseases} {getdietplan.Depression} {getdietplan.DietPlan}", // add new field
+                FileName = @"C:\Users\HP\AppData\Local\Programs\Python\Python313\python.exe",
+                Arguments = $@"D:\NutriGenius\Model\Predict_Diet_Plan.py {getdietplan.Age} {getdietplan.BMI} {getdietplan.Diabetes} {getdietplan.Cholesterol} {getdietplan.ThyroidDiseases} {getdietplan.HeartDiseases} {getdietplan.Depression}",
                 UseShellExecute = false,
                 RedirectStandardOutput = true,
                 RedirectStandardError = true,
@@ -104,110 +130,33 @@ namespace Nutrigenius.Controllers
             }
         }
 
-        //public async Task<string> CallPythonScriptAsync(GetDietPlan getdietplan)
-        //{
-        //    // Initialize TaskCompletionSource for handling completion
-        //    var tcs = new TaskCompletionSource<string>();
-
-        //    try
-        //    {
-        //        // Set up the process start info
-        //        var startInfo = new ProcessStartInfo
-        //        {
-        //            FileName = @"C:\Users\HP\AppData\Local\Programs\Python\Python313\python.exe",
-        //            Arguments = $@"D:\NutriGenius\Model\Predict_Diet_Plan.py {getdietplan.Age} {getdietplan.BMI} {getdietplan.Diabetes} {getdietplan.Cholesterol} {getdietplan.ThyroidDiseases} {getdietplan.HeartDiseases} {getdietplan.Depression} {getdietplan.DietPlan}",
-        //            RedirectStandardOutput = true,
-        //            RedirectStandardError = true,
-        //            UseShellExecute = false,
-        //            CreateNoWindow = true
-        //        };
-
-        //        // Start the process
-        //        var process = new Process { StartInfo = startInfo, EnableRaisingEvents = true };
-
-        //        // Handle process exit event
-        //        process.Exited += (sender, e) =>
-        //        {
-        //            if (process.ExitCode == 0)
-        //            {
-        //                // Success: Read output asynchronously
-        //                string output = process.StandardOutput.ReadToEnd();
-        //                tcs.TrySetResult(output);
-        //            }
-        //            else
-        //            {
-        //                // Error: Read error message
-        //                string error = process.StandardError.ReadToEnd();
-        //                tcs.TrySetException(new Exception($"Python script error: {error}"));
-        //            }
-        //            process.Dispose();
-        //        };
-
-        //        // Start the process asynchronously
-        //        if (!process.Start())
-        //        {
-        //            tcs.TrySetException(new Exception("Failed to start Python process."));
-        //        }
-
-        //        // Timeout in case of long-running script (e.g., 30 seconds)
-        //        using (var cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(30)))
-        //        {
-        //            cancellationTokenSource.Token.Register(() =>
-        //            {
-        //                if (!process.HasExited)
-        //                {
-        //                    process.Kill();
-        //                    tcs.TrySetException(new TimeoutException("Python script execution timed out."));
-        //                }
-        //            });
-
-        //            // Await the TaskCompletionSource to return the result
-        //            return await tcs.Task;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        tcs.TrySetException(new Exception($"Error running Python script: {ex.Message}"));
-        //        throw;
-        //    }
-        //}
-
-
-        //30-10-2024 //remove this
-        private async Task<int> GetmaxUserIDAsync()
-        {
-            int maxUserID = 0;
-
-            using (SqlConnection conn = new SqlConnection(_connectionString))
-            {
-                await conn.OpenAsync();
-
-                string query = "SELECT MAX(UserID) FROM UserHealthData";
-
-                using (SqlCommand cmd = new SqlCommand(query, conn))
-                {
-                    var result = await cmd.ExecuteScalarAsync();
-                    if (result != DBNull.Value)
-                    {
-                        maxUserID = Convert.ToInt32(result);
-                    }
-                }
-            }
-
-            return maxUserID;
-        }
-
-
         [HttpGet("GetDietPlan")]
-        public async Task<IActionResult> GetDietPlan(int userId) // new field
+        public async Task<IActionResult> GetDietPlan(int maxDietID = 0)
         {
             try
             {
-                int maxUserID = await GetmaxUserIDAsync();
+                if (maxDietID == 0)
+                {
+                    using (SqlConnection conn = new SqlConnection(_connectionString))
+                    {
+                        await conn.OpenAsync();
+                        string latestDietIdSql = "SELECT MAX(DietID) FROM UserHealthData";
 
-                // Retrieve user's health data based on userId
-                GetDietPlan getdietplan = await GetUserDataById(maxUserID); // add new field
+                        using (SqlCommand cmd = new SqlCommand(latestDietIdSql, conn))
+                        {
+                            object result = await cmd.ExecuteScalarAsync();
+                            maxDietID = result != DBNull.Value ? Convert.ToInt32(result) : 0;
+                        }
+                    }
+                }
 
+                if (maxDietID == 0)
+                {
+                    return NotFound(new { message = "No diet plan found." });
+                }
+
+                // Retrieve the user's health data using the `maxDietID`
+                GetDietPlan getdietplan = await GetUserDataById(maxDietID);
                 if (getdietplan == null)
                 {
                     return NotFound(new { message = "User data not found." });
@@ -217,7 +166,6 @@ namespace Nutrigenius.Controllers
                 {
                     await conn.OpenAsync();
 
-                    // Query to retrieve the user's diet plan based on the retrieved health data
                     string selectSql = @"SELECT TOP 1 * FROM UserHealthData
                                  WHERE Age = @Age AND BMI = @BMI AND Diabetes = @Diabetes 
                                  AND Cholesterol = @Cholesterol AND ThyroidDiseases = @ThyroidDiseases 
@@ -233,7 +181,6 @@ namespace Nutrigenius.Controllers
                         selectCmd.Parameters.AddWithValue("@ThyroidDiseases", getdietplan.ThyroidDiseases);
                         selectCmd.Parameters.AddWithValue("@HeartDiseases", getdietplan.HeartDiseases);
                         selectCmd.Parameters.AddWithValue("@Depression", getdietplan.Depression);
-                        selectCmd.Parameters.AddWithValue("@DietPlan", getdietplan.DietPlan); //add new field
 
                         using (SqlDataReader reader = await selectCmd.ExecuteReaderAsync())
                         {
@@ -249,18 +196,18 @@ namespace Nutrigenius.Controllers
                                     ThyroidDiseases = reader["ThyroidDiseases"],
                                     HeartDiseases = reader["HeartDiseases"],
                                     Depression = reader["Depression"],
-                                    DietPlan = reader["DietPlan"] //add new field
+                                    DietPlan = reader["DietPlan"],
+                                    DietID = reader["DietID"]
                                 };
 
                                 return Ok(new { message = "Diet plan generated successfully", userHealthData });
                             }
-                            else
-                            {
-                                return NotFound(new { message = "No diet plan found for the provided user data." });
-                            }
                         }
                     }
                 }
+
+                // If no matching record is found
+                return NotFound(new { message = "No diet plan found for the provided user data." });
             }
             catch (Exception ex)
             {
@@ -269,43 +216,107 @@ namespace Nutrigenius.Controllers
         }
 
 
-        // Helper method to get user data based on userId
-        private async Task<GetDietPlan> GetUserDataById(int userId)//add new field
+
+        //[HttpGet("GetDietPlan")]
+        //public async Task<IActionResult> GetDietPlan(int maxDietID)
+        //{
+        //    try
+        //    {
+        //        GetDietPlan getdietplan = await GetUserDataById(maxDietID);
+
+        //        if (getdietplan == null)
+        //        {
+        //            return NotFound(new { message = "User data not found." });
+        //        }
+
+        //        using (SqlConnection conn = new SqlConnection(_connectionString))
+        //        {
+        //            await conn.OpenAsync();
+
+        //            string selectSql = @"SELECT TOP 1 * FROM UserHealthData
+        //                                 WHERE Age = @Age AND BMI = @BMI AND Diabetes = @Diabetes 
+        //                                 AND Cholesterol = @Cholesterol AND ThyroidDiseases = @ThyroidDiseases 
+        //                                 AND HeartDiseases = @HeartDiseases AND Depression = @Depression
+        //                                 ORDER BY UserID DESC";
+
+        //            using (SqlCommand selectCmd = new SqlCommand(selectSql, conn))
+        //            {
+        //                selectCmd.Parameters.AddWithValue("@Age", getdietplan.Age);
+        //                selectCmd.Parameters.AddWithValue("@BMI", getdietplan.BMI);
+        //                selectCmd.Parameters.AddWithValue("@Diabetes", getdietplan.Diabetes);
+        //                selectCmd.Parameters.AddWithValue("@Cholesterol", getdietplan.Cholesterol);
+        //                selectCmd.Parameters.AddWithValue("@ThyroidDiseases", getdietplan.ThyroidDiseases);
+        //                selectCmd.Parameters.AddWithValue("@HeartDiseases", getdietplan.HeartDiseases);
+        //                selectCmd.Parameters.AddWithValue("@Depression", getdietplan.Depression);
+
+        //                using (SqlDataReader reader = await selectCmd.ExecuteReaderAsync())
+        //                {
+        //                    if (reader.Read())
+        //                    {
+        //                        var userHealthData = new
+        //                        {
+        //                            UserID = reader["UserID"],
+        //                            Age = reader["Age"],
+        //                            BMI = reader["BMI"],
+        //                            Diabetes = reader["Diabetes"],
+        //                            Cholesterol = reader["Cholesterol"],
+        //                            ThyroidDiseases = reader["ThyroidDiseases"],
+        //                            HeartDiseases = reader["HeartDiseases"],
+        //                            Depression = reader["Depression"],
+        //                            DietPlan = reader["DietPlan"],
+        //                            DietID = reader["DietID"]
+        //                        };
+
+        //                        return Ok(new { message = "Diet plan generated successfully", userHealthData });
+        //                    }
+        //                    else
+        //                    {
+        //                        return NotFound(new { message = "No diet plan found for the provided user data." });
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
+        //    }
+        //}
+
+        private async Task<GetDietPlan> GetUserDataById(int dietID)
         {
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
                 await conn.OpenAsync();
-                string selectSql = "SELECT Age, BMI, Diabetes, Cholesterol, ThyroidDiseases, HeartDiseases, Depression FROM UserHealthData WHERE UserID = @UserId";
+                string selectSql = "SELECT Age, BMI, Diabetes, Cholesterol, ThyroidDiseases, HeartDiseases, Depression, DietPlan, DietID FROM UserHealthData WHERE DietID = @DietID";
 
                 using (SqlCommand selectCmd = new SqlCommand(selectSql, conn))
                 {
-                    selectCmd.Parameters.AddWithValue("@UserId", userId);
+                    selectCmd.Parameters.AddWithValue("@DietID", dietID);
                     using (SqlDataReader reader = await selectCmd.ExecuteReaderAsync())
                     {
                         if (reader.Read())
                         {
                             return new GetDietPlan
                             {
-                                Age = reader.GetInt32(0), 
-                                BMI = (double)reader.GetDecimal(1), 
-                                Diabetes = reader.GetInt32(2), 
-                                Cholesterol = reader.GetInt32(3), 
-                                ThyroidDiseases = reader.GetInt32(4), 
-                                HeartDiseases = reader.GetInt32(5), 
+                                Age = reader.GetInt32(0),
+                                BMI = (double)reader.GetDecimal(1),
+                                Diabetes = reader.GetInt32(2),
+                                Cholesterol = reader.GetInt32(3),
+                                ThyroidDiseases = reader.GetInt32(4),
+                                HeartDiseases = reader.GetInt32(5),
                                 Depression = reader.GetInt32(6),
-                                DietPlan = reader.GetString(7)// add new field
-
+                                DietPlan = reader.GetString(7),
+                                DietID = reader.GetInt32(8)
                             };
                         }
                         else
                         {
-                            return null; 
+                            return null;
                         }
                     }
                 }
             }
         }
-
-
     }
 }

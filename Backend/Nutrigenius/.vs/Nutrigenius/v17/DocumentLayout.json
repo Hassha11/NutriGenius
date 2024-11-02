@@ -99,10 +99,9 @@
               "RelativeDocumentMoniker": "Models\\GetDietPlan.cs",
               "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\Models\\GetDietPlan.cs",
               "RelativeToolTip": "Models\\GetDietPlan.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAoAAAApAAAA",
+              "ViewState": "AQIAAAQAAAAAAAAAAAAwwA8AAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-26T05:18:36.982Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-26T05:18:36.982Z"
             },
             {
               "$type": "Document",
@@ -112,7 +111,7 @@
               "RelativeDocumentMoniker": "Controllers\\GetDietPlanController.cs",
               "ToolTip": "D:\\NutriGenius\\Backend\\Nutrigenius\\Controllers\\GetDietPlanController.cs",
               "RelativeToolTip": "Controllers\\GetDietPlanController.cs",
-              "ViewState": "AQIAALsAAAAAAAAAAAApwMsAAAAPAAAA",
+              "ViewState": "AQIAAHoAAAAAAAAAAAApwIYAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-26T05:09:02.568Z",
               "EditorCaption": ""
@@ -163,8 +162,7 @@
               "RelativeToolTip": "Controllers\\LoginController.cs",
               "ViewState": "AQIAAAkAAAAAAAAAAAAAAA4AAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-15T06:28:12.423Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-15T06:28:12.423Z"
             },
             {
               "$type": "Document",
