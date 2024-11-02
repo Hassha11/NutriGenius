@@ -45,7 +45,8 @@
     padding: 4px;
     font-size: 1rem;
     width: 100%;
-    color: #757878;
+    color: #a0a6a6;
+    background-color: transparent;
 }
 
 label {
