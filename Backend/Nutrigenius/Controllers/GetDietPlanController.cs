@@ -12,11 +12,11 @@ namespace Nutrigenius.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DietController : ControllerBase
+    public class GetDietPlanController : ControllerBase
     {
         private readonly string _connectionString;
 
-        public DietController(IConfiguration configuration)
+        public GetDietPlanController(IConfiguration configuration)
         {
             _connectionString = configuration.GetConnectionString("DefaultConnection");
         }
@@ -38,9 +38,11 @@ namespace Nutrigenius.Controllers
                 {
                     await conn.OpenAsync();
 
+                    //select max(dietId) + 1 from health table = variable
+
                     // Insert new record into the database, excluding UserID since it is an identity column
                     string insertSql = @"INSERT INTO UserHealthData (Age, BMI, Diabetes, Cholesterol, ThyroidDiseases, HeartDiseases, Depression, DietPlan)
-                                         VALUES (@Age, @BMI, @Diabetes, @Cholesterol, @ThyroidDiseases, @HeartDiseases, @Depression, @DietPlan)";
+                                         VALUES (@Age, @BMI, @Diabetes, @Cholesterol, @ThyroidDiseases, @HeartDiseases, @Depression, @DietPlan)";// added new field
 
                     //string DietPlan = dietPlan;
 
@@ -74,13 +76,13 @@ namespace Nutrigenius.Controllers
             }
         }
 
-        private string CallPythonScript(GetDietPlan getdietplan)
+        private string CallPythonScript(GetDietPlan getdietplan) //Commented 29-10-2024
 
         {
             ProcessStartInfo start = new ProcessStartInfo
             {
                 FileName = @"C:\Users\HP\AppData\Local\Programs\Python\Python313\python.exe",  // Path to python.exe
-                Arguments = $@"D:\NutriGenius\Model\Predict_Diet_Plan.py {getdietplan.Age} {getdietplan.BMI} {getdietplan.Diabetes} {getdietplan.Cholesterol} {getdietplan.ThyroidDiseases} {getdietplan.HeartDiseases} {getdietplan.Depression} {getdietplan.DietPlan}",
+                Arguments = $@"D:\NutriGenius\Model\Predict_Diet_Plan.py {getdietplan.Age} {getdietplan.BMI} {getdietplan.Diabetes} {getdietplan.Cholesterol} {getdietplan.ThyroidDiseases} {getdietplan.HeartDiseases} {getdietplan.Depression} {getdietplan.DietPlan}", // add new field
                 UseShellExecute = false,
                 RedirectStandardOutput = true,
                 RedirectStandardError = true,
@@ -102,13 +104,109 @@ namespace Nutrigenius.Controllers
             }
         }
 
-        [HttpGet("GetUserDietPlan")]
-        public async Task<IActionResult> GetUserDietPlan(int userId)
+        //public async Task<string> CallPythonScriptAsync(GetDietPlan getdietplan)
+        //{
+        //    // Initialize TaskCompletionSource for handling completion
+        //    var tcs = new TaskCompletionSource<string>();
+
+        //    try
+        //    {
+        //        // Set up the process start info
+        //        var startInfo = new ProcessStartInfo
+        //        {
+        //            FileName = @"C:\Users\HP\AppData\Local\Programs\Python\Python313\python.exe",
+        //            Arguments = $@"D:\NutriGenius\Model\Predict_Diet_Plan.py {getdietplan.Age} {getdietplan.BMI} {getdietplan.Diabetes} {getdietplan.Cholesterol} {getdietplan.ThyroidDiseases} {getdietplan.HeartDiseases} {getdietplan.Depression} {getdietplan.DietPlan}",
+        //            RedirectStandardOutput = true,
+        //            RedirectStandardError = true,
+        //            UseShellExecute = false,
+        //            CreateNoWindow = true
+        //        };
+
+        //        // Start the process
+        //        var process = new Process { StartInfo = startInfo, EnableRaisingEvents = true };
+
+        //        // Handle process exit event
+        //        process.Exited += (sender, e) =>
+        //        {
+        //            if (process.ExitCode == 0)
+        //            {
+        //                // Success: Read output asynchronously
+        //                string output = process.StandardOutput.ReadToEnd();
+        //                tcs.TrySetResult(output);
+        //            }
+        //            else
+        //            {
+        //                // Error: Read error message
+        //                string error = process.StandardError.ReadToEnd();
+        //                tcs.TrySetException(new Exception($"Python script error: {error}"));
+        //            }
+        //            process.Dispose();
+        //        };
+
+        //        // Start the process asynchronously
+        //        if (!process.Start())
+        //        {
+        //            tcs.TrySetException(new Exception("Failed to start Python process."));
+        //        }
+
+        //        // Timeout in case of long-running script (e.g., 30 seconds)
+        //        using (var cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(30)))
+        //        {
+        //            cancellationTokenSource.Token.Register(() =>
+        //            {
+        //                if (!process.HasExited)
+        //                {
+        //                    process.Kill();
+        //                    tcs.TrySetException(new TimeoutException("Python script execution timed out."));
+        //                }
+        //            });
+
+        //            // Await the TaskCompletionSource to return the result
+        //            return await tcs.Task;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        tcs.TrySetException(new Exception($"Error running Python script: {ex.Message}"));
+        //        throw;
+        //    }
+        //}
+
+
+        //30-10-2024 //remove this
+        private async Task<int> GetmaxUserIDAsync()
+        {
+            int maxUserID = 0;
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                await conn.OpenAsync();
+
+                string query = "SELECT MAX(UserID) FROM UserHealthData";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    var result = await cmd.ExecuteScalarAsync();
+                    if (result != DBNull.Value)
+                    {
+                        maxUserID = Convert.ToInt32(result);
+                    }
+                }
+            }
+
+            return maxUserID;
+        }
+
+
+        [HttpGet("GetDietPlan")]
+        public async Task<IActionResult> GetDietPlan(int userId) // new field
         {
             try
             {
+                int maxUserID = await GetmaxUserIDAsync();
+
                 // Retrieve user's health data based on userId
-                GetDietPlan getdietplan = await GetUserDataById(userId);
+                GetDietPlan getdietplan = await GetUserDataById(maxUserID); // add new field
 
                 if (getdietplan == null)
                 {
@@ -135,7 +233,7 @@ namespace Nutrigenius.Controllers
                         selectCmd.Parameters.AddWithValue("@ThyroidDiseases", getdietplan.ThyroidDiseases);
                         selectCmd.Parameters.AddWithValue("@HeartDiseases", getdietplan.HeartDiseases);
                         selectCmd.Parameters.AddWithValue("@Depression", getdietplan.Depression);
-                        selectCmd.Parameters.AddWithValue("@DietPlan", getdietplan.DietPlan);
+                        selectCmd.Parameters.AddWithValue("@DietPlan", getdietplan.DietPlan); //add new field
 
                         using (SqlDataReader reader = await selectCmd.ExecuteReaderAsync())
                         {
@@ -151,7 +249,7 @@ namespace Nutrigenius.Controllers
                                     ThyroidDiseases = reader["ThyroidDiseases"],
                                     HeartDiseases = reader["HeartDiseases"],
                                     Depression = reader["Depression"],
-                                    DietPlan = reader["DietPlan"]
+                                    DietPlan = reader["DietPlan"] //add new field
                                 };
 
                                 return Ok(new { message = "Diet plan generated successfully", userHealthData });
@@ -170,8 +268,9 @@ namespace Nutrigenius.Controllers
             }
         }
 
+
         // Helper method to get user data based on userId
-        private async Task<GetDietPlan> GetUserDataById(int userId)
+        private async Task<GetDietPlan> GetUserDataById(int userId)//add new field
         {
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
@@ -194,7 +293,7 @@ namespace Nutrigenius.Controllers
                                 ThyroidDiseases = reader.GetInt32(4), 
                                 HeartDiseases = reader.GetInt32(5), 
                                 Depression = reader.GetInt32(6),
-                                DietPlan = reader.GetString(7)
+                                DietPlan = reader.GetString(7)// add new field
 
                             };
                         }

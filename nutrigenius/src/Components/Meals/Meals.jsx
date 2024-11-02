@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Meals.css';
 import axios from 'axios';
 import Header from '../Header/Header';
@@ -8,27 +8,25 @@ import Footer from '../Footer/Footer';
 function DietPlanForm() {
     const [age, setAge] = useState('');
     const [bmi, setBmi] = useState('');
-    const [diabetes, setDiabetes] = useState('');
-    const [cholesterol, setCholesterol] = useState('');
-    const [thyroidDiseases, setThyroidDiseases] = useState('');
-    const [heartDiseases, setHeartDiseases] = useState('');
-    const [depression, setDepression] = useState('');
+    const [diabetes, setDiabetes] = useState(0);
+    const [cholesterol, setCholesterol] = useState(0);
+    const [thyroidDiseases, setThyroidDiseases] = useState(0);
+    const [heartDiseases, setHeartDiseases] = useState(0);
+    const [depression, setDepression] = useState(0);
     const [dietPlan, setDietPlan] = useState('');
+    const [loading, setLoading] = useState(true); // Indicates loading state
 
-    // Handle form submission to send data to the backend
-    const handleMeal = async (e) => {
-        e.preventDefault();
-
+    // Function to handle meal (fetching diet plan)
+    const handleMeal = async () => {
         try {
-            const response = await axios.post('http://localhost:5274/api/Diet/get-diet-plan', {
-                age: age,
-                bmi: bmi,
+            const response = await axios.get('http://localhost:5274/api/GetDietPlan/GetDietPlan', {
+                age,
+                bmi,
                 diabetes,
                 cholesterol,
                 thyroidDiseases,
                 heartDiseases,
-                depression,
-                dietPlan
+                depression
             });
 
             if (response.status === 200) {
@@ -36,8 +34,15 @@ function DietPlanForm() {
             }
         } catch (error) {
             console.error('Error generating diet plan', error);
+        } finally {
+            setLoading(false); // Set loading to false after the request completes
         }
     };
+
+    // Call handleMeal on component mount
+    useEffect(() => {
+        handleMeal();
+    }, []); // This runs once when the component mounts
 
     // Function to generate a downloadable file
     const downloadDietPlan = () => {
@@ -45,28 +50,21 @@ function DietPlanForm() {
         const file = new Blob([dietPlan], { type: 'text/plain' });
         element.href = URL.createObjectURL(file);
         element.download = "DietPlan.txt";
-        document.body.appendChild(element); // Required for this to work in FireFox
+        document.body.appendChild(element); // Required for this to work in Firefox
         element.click();
     };
 
-    // Function to clear the form fields
-    const resetForm = () => {
-        setAge('');
-        setBmi('');
-        setDiabetes('');
-        setCholesterol('');
-        setThyroidDiseases('');
-        setHeartDiseases('');
-        setDepression('');
-        setDietPlan('');
-    };
+    // Render loading state while data is being fetched
+    if (loading) {
+        return <p>Loading...</p>; // Display loading message before the HTML view loads
+    }
 
     return (
         <div className='layout-meals'>
             <Header />
             <Dashboard />
             <div className='wrapper-meals'>
-                <form onSubmit={handleMeal}>
+                <form onSubmit={(e) => e.preventDefault()}>
                     <div className="form-group">
                         <label htmlFor="age">Age</label>
                         <textarea
@@ -121,9 +119,9 @@ function DietPlanForm() {
                             onChange={(e) => setThyroidDiseases(parseInt(e.target.value))}
                         >
                             <option value={0}>None</option>
-                            <option value={1}>Level 1 (Thyroid-Stimulating Hormone (TSH))</option>
-                            <option value={2}>Level 2 (Free Thyroxine (Free T4))</option>
-                            <option value={3}>Level 3 (Free Triiodothyronine (Free T3))</option>
+                            <option value={1}>Level 1 (TSH)</option>
+                            <option value={2}>Level 2 (Free T4)</option>
+                            <option value={3}>Level 3 (Free T3)</option>
                         </select>
                     </div>
                     <div className="form-group">
@@ -134,7 +132,7 @@ function DietPlanForm() {
                             onChange={(e) => setHeartDiseases(parseInt(e.target.value))}
                         >
                             <option value={0}>None</option>
-                            <option value={1}>Level 1 (Heart Rate 60bpm-100bpm)</option>
+                            <option value={1}>Level 1 (Heart Rate 60-100 bpm)</option>
                             <option value={2}>Level 2 (Blood Pressure 120/80 mmHg)</option>
                             <option value={3}>Level 3 (Ejection Fraction 55%-70%)</option>
                         </select>
@@ -162,12 +160,9 @@ function DietPlanForm() {
                             style={{ width: '100%' }}
                         />
                     </div>
-                    
-                    {/* Buttons for Download and Close */}
-                    <div className="button-container">
-                        <button type="button" onClick={downloadDietPlan} style={{ width: '380px', padding: '10px', marginTop: '4px', float: 'left', marginLeft: '30px'}}>Download Diet Plan</button>
-                        {/*<button type="button" onClick={resetForm}>Close</button>*/}
-                    </div>
+
+                    {/* Button for Download */}
+                    <button type="button" onClick={downloadDietPlan} style={{ width: '100%', padding: '10px', marginTop: '4px'}}>Download Diet Plan</button>
                 </form>
                 
                 {dietPlan && (
