@@ -185,12 +185,12 @@ function DietPlanForm() {
 
                 {error && <p style={{ color: 'red' }}>{error}</p>}
 
-                {dietPlan && (
+                {/*{dietPlan && (
                     <div className="diet-plan">
                         <h3>Your Diet Plan</h3>
                         <p>{dietPlan}</p>
                     </div>
-                )}
+                )}*/}
             </div>
             <Footer />
         </div>
