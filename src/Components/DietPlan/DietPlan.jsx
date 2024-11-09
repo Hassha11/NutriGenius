@@ -61,11 +61,11 @@ const DietPlanForm = () => {
         <Header />
         <Dashboard />
         <div className="wrapper">
-            <h2>Create Your Diet Plan</h2>
+            <h1>Request a Diet Plan</h1>
             <form onSubmit={handleSubmit}>
                 <div>
-                <div className="input-box" style={{ display: 'flex', alignItems: 'center', marginTop: '35px', marginBottom: '8px' }}>
-                <label htmlFor="age">Age</label>
+                <div className="input-box" style={{ display: 'flex', alignItems: 'center', marginTop: '15px', marginBottom: '8px' }}>
+                <label htmlFor="age" style={{ marginRight: '100px', width: '150px' }}>Age</label>
                     <input 
                      type="number" 
                      id="age" 
@@ -78,7 +78,7 @@ const DietPlanForm = () => {
                     </div>
                 <div>
                 <div className="input-box reduced-gap" style={{ display: 'flex', alignItems: 'center', marginTop: '10px', marginBottom: '8px' }}>
-                <label htmlFor="bmi">BMI</label>
+                <label htmlFor="bmi" style={{ marginRight: '100px', width: '150px' }}>BMI</label>
                     <input 
                      type="number" 
                      id="bmi"  
@@ -91,7 +91,7 @@ const DietPlanForm = () => {
                     </div>
                 <div>
                 <div className="input-box reduced-gap" style={{ display: 'flex', alignItems: 'center', marginTop: '10px', marginBottom: '8px' }}>
-                <label htmlFor="diabetes">Diabetes</label>
+                <label htmlFor="diabetes" style={{ marginRight: '40px', width: '150px' }}>Diabetes</label>
                     <select id="diabetes" value={diabetes} onChange={(e) => setDiabetes(e.target.value)} required style={inputStyle}>
                     <option value="">Select Level</option>
                     <option value="0">None</option>
@@ -103,7 +103,7 @@ const DietPlanForm = () => {
                     </div>
                 <div>
                 <div className="input-box reduced-gap" style={{ display: 'flex', alignItems: 'center', marginTop: '10px', marginBottom: '8px' }}>
-                        <label>Cholesterol</label>
+                        <label htmlFor="cholesterol" style={{ marginRight: '10px', width: '100px' }}>Cholesterol</label>
                         <select value={cholesterol} onChange={(e) => setCholesterol(e.target.value)} required style={inputStyle}>
                             <option value="">Select Level</option>
                             <option value="0">None</option>
@@ -115,7 +115,7 @@ const DietPlanForm = () => {
                     </div>
                 <div>
                 <div className="input-box reduced-gap" style={{ display: 'flex', alignItems: 'center', marginTop: '10px', marginBottom: '8px' }}>
-                <label>Thyroid Disorders</label>
+                <label htmlFor="thyroidDiseases" style={{ marginRight: '8px', width: '100px' }}>Thyroid Disorders</label>
                         <select value={thyroidDiseases} onChange={(e) => setThyroidDiseases(e.target.value)} required style={inputStyle}>
                             <option value="">Select Level</option>
                             <option value="0">None</option>
@@ -127,7 +127,7 @@ const DietPlanForm = () => {
                     </div>
                 <div>
                 <div className="input-box reduced-gap" style={{ display: 'flex', alignItems: 'center', marginTop: '10px', marginBottom: '8px' }}>
-                <label>Heart Disease</label>
+                <label htmlFor="heartDiseases" style={{ marginRight: '10px', width: '100px' }}>Heart Diseases</label>
                         <select value={heartDiseases} onChange={(e) => setHeartDiseases(e.target.value)} required style={inputStyle}>
                             <option value="">Select Level</option>
                             <option value="0">None</option>
@@ -139,7 +139,7 @@ const DietPlanForm = () => {
                     </div>
                 <div>
                 <div className="input-box reduced-gap" style={{ display: 'flex', alignItems: 'center', marginTop: '10px', marginBottom: '8px' }}>
-                <label>Depression</label>
+                <label htmlFor="depression" style={{ marginRight: '20px', width: '100px' }}>Depression</label>
                         <select value={depression} onChange={(e) => setDepression(e.target.value)} required style={inputStyle}>
                             <option value="">Select Level</option>
                             <option value="0">None</option>

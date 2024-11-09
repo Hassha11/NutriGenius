@@ -107,3 +107,29 @@ button {
 
 
 
+.input-box {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 8px;
+}
+
+.input-box label {
+    width: 150px; /* Set a fixed width to align all labels */
+    margin-right: 10px; /* Add spacing between label and input */
+    text-align: right; /* Align text to the right for consistency */
+}
+
+.input-box select,
+.input-box input {
+    width: 260px; /* Set same width for select and input fields */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+
+
+
+
