@@ -15,16 +15,16 @@ const BMIForm = () => {
     const [status, setStatus] = useState('');
     const navigate = useNavigate();
 
-    const isUserLoggedIn = localStorage.getItem('authToken'); 
+    //const isUserLoggedIn = localStorage.getItem('authToken'); 
 
     const handleBMI = async (event) => {
         event.preventDefault();
 
-        if (!isUserLoggedIn) {
-            alert("Please log in to the system");
-            navigate('/login'); 
-            return;
-        }
+        //if (!isUserLoggedIn) {
+           // alert("Please log in to the system");
+            //navigate('/login'); 
+           // return;
+        //}
 
         try {
             const response = await axios.post('http://localhost:5274/api/BMI/BMI', {

@@ -18,16 +18,16 @@ const DietPlanForm = () => {
     const [heartDiseases, setHeartDiseases] = useState(0);
     const [depression, setDepression] = useState(0);
 
-    const isUserLoggedIn = localStorage.getItem('authToken'); 
+    //const isUserLoggedIn = localStorage.getItem('authToken'); 
 
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent the default form submission
 
-        if (!isUserLoggedIn) {
-            alert("Please log in to the system");
-            navigate('/login'); 
-            return;
-        }
+        //if (!isUserLoggedIn) {
+          //alert("Please log in to the system");
+          //navigate('/login'); 
+          //return;
+        //}
 
         try {
             const response = await axios.post('http://localhost:5274/api/GetDietPlan/GetDietPlan', {
