@@ -14,7 +14,7 @@ return (
                         <Link to="/bmi">BMI Calculating</Link>
                     </li>
                     <li>
-                        <Link to="/">Analysis</Link>
+                        <Link to="/analysis">Analysis</Link>
                     </li>
                     <li>
                         <Link to="/diet">Dietitian Recommendations</Link>
