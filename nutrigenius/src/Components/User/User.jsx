@@ -147,7 +147,7 @@ const User = () => {
                 }
             } else {
                 console.error('No stored user information found');
-                setError('User is not logged in');
+                setError('');
             }
         };
 
