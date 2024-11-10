@@ -143,7 +143,7 @@ const User = () => {
                     }
                 } catch (error) {
                     console.error('There was an error fetching profile data!', error);
-                    setError('Failed to load profile data');
+                    setError('');
                 }
             } else {
                 console.error('No stored user information found');
