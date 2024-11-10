@@ -1,5 +1,5 @@
 import pandas as pd
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
 import joblib
@@ -21,12 +21,13 @@ y = data['Diet Plan']
 # Split the data: 80% training, 20% testing
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Train the model with hyperparameters tuned to improve performance
-model = DecisionTreeClassifier(
-    max_depth=10,             # Limits depth to control complexity
-    min_samples_split=5,      # Controls minimum samples needed to split a node
-    min_samples_leaf=2,       # Controls minimum samples needed at leaf node
-    class_weight='balanced',  # Gives weight to underrepresented classes if needed
+# Initialize the RandomForest model
+model = RandomForestClassifier(
+    n_estimators=100,       # Number of trees
+    max_depth=10,           # Max depth of trees
+    min_samples_split=5,    # Minimum samples needed to split
+    min_samples_leaf=2,     # Minimum samples at a leaf node
+    class_weight='balanced', # Balances class weights
     random_state=42
 )
 

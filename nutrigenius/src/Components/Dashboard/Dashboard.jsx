@@ -1,9 +1,22 @@
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import './Dashboard.css';
 
 
 const Layout = () => {
+    const navigate = useNavigate();
+
+
+    const handleLogout = () => {
+        // Clear user details from localStorage
+        localStorage.removeItem('userId');
+        localStorage.removeItem('username');
+        localStorage.removeItem('password');
+    
+        // Navigate to the home page
+        navigate('/');
+    };
+
     return (
         <div className="layout">
             <nav>
@@ -22,7 +35,12 @@ const Layout = () => {
                         <Link to="/about">About</Link>
                     </li>
                     <li><br></br>
-                        <Link style={{ marginTop: '250px', alignItems:'center' }} to="/">Log Out</Link>
+                        <button
+                            style={{ marginTop: '200px', alignItems: 'center', width: '150px', height: '40px', marginLeft: '25px' }}
+                            onClick={handleLogout}
+                        >
+                            Log Out
+                        </button>
                     </li>
                 </ul>
             </nav>
