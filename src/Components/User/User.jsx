@@ -213,11 +213,25 @@ const User = () => {
         }
     }
     };
+
+    //
+    const handleLogout = () => {
+        localStorage.removeItem('userId');
+        localStorage.removeItem('username');
+        localStorage.removeItem('password');
+        setUserId('');
+        setName('');
+        setGender('');
+        setDOB('');
+        setUsername('');
+        setPassword('');
+        navigate('/');
+    };
     
     return (
         <div className='layout'>
             <Header />
-            <Dashboard />
+            <Dashboard onLogout={handleLogout} />
             <div style={{ marginTop: '5px', height: '520px' }} className='wrapper-user'>
               
                     <h1 style={{ marginTop: '-5px', color: 'GrayText' }}>User Profile</h1>
