@@ -46,9 +46,11 @@ const RegistrationForm = () => {
         <div className='layout'>
           <Header />
            <Dashboard />
-        <div style={{ marginTop: '40px' , height: '580px' }} className='wrapper'>
+        <div style={{ marginTop: '30px' , height: '580px' }} className='wrapper'>
             <form onSubmit={handleRegistration}>
-                <h1>Registration</h1>
+            <div className="header-container">
+              <h1 style={{ marginTop: '-10px' }}>Registration</h1> {/* Adjust the margin as needed */}
+            </div>
                 <div style={{ marginTop: '10px' }} className="input-box">
                     <input
                         type="text"
@@ -58,7 +60,7 @@ const RegistrationForm = () => {
                         required
                     />    
                 </div>
-                <div style={{ marginTop: '-8px' }} className="input-box">
+                <div style={{ marginTop: '10px' }} className="input-box">
                     <select
                         value={gender}
                         onChange={(e) => setGender(e.target.value)}
@@ -69,7 +71,7 @@ const RegistrationForm = () => {
                         <option value="female">Female</option>
                     </select>
                 </div>
-                <div style={{ marginTop: '10px' }} className="input-box">
+                <div style={{ marginTop: '5px' }} className="input-box">
                     <label style={{ color: 'GrayText' }} htmlFor="dob">Date of Birth</label>
                     <input
                         type="date"
@@ -79,7 +81,7 @@ const RegistrationForm = () => {
                         required
                     />
                 </div>
-                <div style={{ marginTop: '10px' }} className="input-box">
+                <div style={{ marginTop: '5px' }} className="input-box">
                     <input
                         type="text"
                         placeholder='Username'
@@ -88,7 +90,7 @@ const RegistrationForm = () => {
                         required
                     />
                 </div>
-                <div style={{ marginTop: '-6px' }} className="input-box">
+                <div style={{ marginTop: '-12px' }} className="input-box">
                     <input
                         type="password"
                         placeholder='Password'
@@ -97,7 +99,7 @@ const RegistrationForm = () => {
                         required
                     />
                 </div>
-                <div style={{ marginTop: '-6px' }} className="input-box">
+                <div style={{ marginTop: '-10px' }} className="input-box">
                     <input
                         type="password"
                         placeholder='Confirm Password'
@@ -106,7 +108,7 @@ const RegistrationForm = () => {
                         required
                     />
                 </div>
-                <button style={{ marginTop: '-10px' }} type="submit">Register</button>
+                <button style={{ marginTop: '-12px' }} type="submit">Register</button>
             </form>
         </div>
         <Footer/>
