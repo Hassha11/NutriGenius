@@ -116,9 +116,9 @@ const User = () => {
             if (storedUsername && storedPassword) {
                 try {
                     const response = await axios.get(`http://localhost:5274/api/User/Profile`, {
-                   //const response = await axios.get(`http://localhost:5274/api/User/Profile?userName=${storedUsername}&password=${storedPassword}`, {
+                    //const response = await axios.get(`http://localhost:5274/api/User/Profile?userName=${storedUsername}&password=${storedPassword}`, {
                         params: {
-                            name:name ,
+                            name:name,
                             gender: gender,
                             dob:dob,
                             userName: storedUsername,
@@ -143,7 +143,7 @@ const User = () => {
                     }
                 } catch (error) {
                     console.error('There was an error fetching profile data!', error);
-                    setError('Failed to load profile data');
+                    setError('');
                 }
             } else {
                 console.error('No stored user information found');
